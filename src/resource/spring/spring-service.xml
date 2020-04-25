@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="spring-dao.xml"/>
+
+	<bean id="genericService" class="com.nfehost.service.impl.ServiceImpl" abstract="true">
+	</bean>
+
+	<bean id="usuarioService" class="com.nfehost.service.impl.UsuarioServiceImpl" parent="genericService">
+		<property name="dao" ref="usuarioDao"/>
+	</bean>
+
+	<bean id="contatoService" class="com.nfehost.service.impl.ContatoServiceImpl" parent="genericService">
+		<property name="dao" ref="contatoDao"/>
+	</bean>
+
+	<bean id="emitenteService" class="com.nfehost.service.impl.EmitenteServiceImpl" parent="genericService">
+		<property name="dao" ref="emitenteDao"/>
+	</bean>
+
+	<bean id="destinatarioService" class="com.nfehost.service.impl.DestinatarioServiceImpl" parent="genericService">
+		<property name="dao" ref="destinatarioDao"/>
+	</bean>
+
+	<bean id="arquivoService" class="com.nfehost.service.impl.ArquivoServiceImpl" parent="genericService">
+		<property name="dao" ref="arquivoDao"/>
+	</bean>
+
+	<bean id="notaFiscalService" class="com.nfehost.service.impl.NotaFiscalServiceImpl" parent="genericService">
+		<property name="dao" ref="notaFiscalDao"/>
+	</bean>
+
+	<bean id="anexoService" class="com.nfehost.service.impl.AnexoServiceImpl">
+		<property name="dao" ref="anexoDao"/>
+	</bean>
+
+	<bean id="integracaoProcessadoraXmlService" class="com.nfehost.service.processor.IntegracaoProcessadoraXmlService"/>
+
+	<bean id="emailService" class="com.nfehost.service.email.EmailService"/>
+	
+</beans>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<f:metadata>
+				<f:event listener="#{contatoListBean.helper.fillDefaults()}" type="preRenderView" />
+			</f:metadata>
+			
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Filtro de Contatos"/> </span>
+			</div>
+			<br />
+
+			<h:form id="list">
+
+				<p:messages id="messages"/>
+
+				<p:panelGrid styleClass="panelGridCenter noBorders">
+						
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Emitente"/>
+						</p:column>
+
+						<p:column>
+							<p:selectOneMenu value="#{contatoListBean.filter.emitente}" label="Emitente" converter="emitenteConverter" filter="true" filterMatchMode="contains">
+								<f:selectItem itemLabel="" itemValue="#{null}" noSelectionOption="true"/>
+								<f:selectItems var="emitente" value="#{contatoListBean.helper.listEmitentes}" itemLabel="#{emitente.dadosEmpresa.cnpj} - #{emitente.dadosEmpresa.razaoSocial}"/>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Nome"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="60" size="65" value="#{contatoListBean.filter.nome}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="E-mail"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="60" size="65" value="#{contatoListBean.filter.email}" />
+						</p:column>
+					</p:row>
+
+					<!-- 
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Telefone"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="14" size="" value="" />
+						</p:column>
+					</p:row>
+					 -->
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<div align="left">
+									<h:commandLink value="Salvar em pdf" disabled="#{empty contatoListBean.lazyModel}">
+										<p:dataExporter type="pdf" target="tabela" fileName="contato" encoding="CP1252"/> 
+									</h:commandLink>
+								</div>
+								<div align="right">
+									<p:commandButton value="Filtrar" actionListener="#{contatoListBean.buscar}" update="tabela messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+				</p:panelGrid>
+
+				<br/>
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Contatos Cadastrados"/> </span>
+				</div>
+
+				<p:button outcome="form" value="Novo Contato" styleClass="noFormat" rendered="#{loginBean.administrador}">
+					<f:param name="modo" value="create" />
+				</p:button>
+
+				<br/><br/>
+
+				<p:dataTable
+					id="tabela"
+					var="contato"
+					value="#{contatoListBean.lazyModel}"
+					emptyMessage="Nenhum contato encontrado"
+					sortBy="#{contato.id}"
+					lazy="true"
+					rows="10"
+					resizableColumns="true"
+					rowKey="#{contato.id}"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column width="7%" styleClass="numero">
+				    	<f:facet name="header">
+				    		<h:outputText value="Código"/>
+				    	</f:facet>
+						<h:outputText value="#{contato.id}"/>
+					</p:column>
+
+					<p:column styleClass="letra" width="18%">
+				    	<f:facet name="header">
+				    		<h:outputText value="Nome"/>
+				    	</f:facet>
+						<h:outputText value="#{contato.nome}"/>
+					</p:column>
+
+					<p:column styleClass="letra" width="15%">
+				    	<f:facet name="header">
+				    		<h:outputText value="E-mail"/>
+				    	</f:facet>
+						<h:outputText value="#{contato.email}"/>
+					</p:column>
+
+					<p:column styleClass="dados" width="10%">
+				    	<f:facet name="header">
+				    		<h:outputText value="Telefone"/>
+				    	</f:facet>
+						<h:outputText value="#{contato.telefone}"/>
+					</p:column>
+
+					<p:column style="width:7%" exportable="false" rendered="#{loginBean.administrador}">
+						<f:facet name="header">
+							<h:outputText value="Ação"/>
+						</f:facet>
+						<center>
+							<p:button outcome="form" styleClass="botaoImagem" icon="botaoEditar" title="Editar">
+								<f:param name="modo" value="update"/>
+								<f:param name="id" value="#{contato.id}"/>
+							</p:button>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<p:commandButton id="btnExcluirVinculacao" process="btnExcluirVinculacao" icon="botaoExcluir" styleClass="botaoImagem" action="#{contatoListBean.setPojoId(contato.id)}" oncomplete="confirmationContatoExclusao.show()" title="Excluir"/>
+						</center>
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+				<br />
+
+			</h:form>
+			
+			<p:confirmDialog showEffect="true" message="Deseja realmente excluir este contato?" header="Confirmação de exclusão" widgetVar="confirmationContatoExclusao">  
+       			<p:commandButton id="btnConfirm" process="btnConfirm" value="Sim" action="#{contatoListBean.remove}" oncomplete="confirmationContatoExclusao.hide()" update=":list:tabela :list:messages"/>
+	        	<p:commandButton id="decline" type="button" value="Não" onclick="confirmationContatoExclusao.hide()"  />   
+			</p:confirmDialog>
+			
+			
+		</div>
+	</ui:define>
+</ui:composition>

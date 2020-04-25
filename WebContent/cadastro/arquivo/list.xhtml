@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<f:metadata>
+				<f:event listener="#{arquivoListBean.helper.fillDefaults()}" type="preRenderView" />
+			</f:metadata>
+			
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Filtro de Arquivos Anexos"/> </span>
+			</div>
+			<br />
+
+			<h:form id="list">
+
+				<p:messages id="messages"/>
+
+				<p:panelGrid styleClass="panelGridCenter noBorders">
+						
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Data de registro do arquivo Nota Fiscal"/>
+						</p:column>
+						
+						<p:column>
+							<p:panelGrid>
+								<p:row>
+									<p:column styleClass="noPadding">
+										<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value="#{arquivoListBean.filter.dataInicial}"/>
+									</p:column>
+			
+									<p:column>
+										<p:outputLabel value="à"/>
+									</p:column>
+
+									<p:column>
+										<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" label="Data de registro do arquivo Nota Fiscal Final"  value="#{arquivoListBean.filter.dataFinal}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="3">
+								<div align="left">
+									<h:commandLink value="Salvar em pdf" disabled="#{empty arquivoListBean.lazyModel}">
+										<p:dataExporter type="pdf" target="tabela" fileName="arquivo" encoding="CP1252"/> 
+									</h:commandLink>
+								</div>
+								<div align="right">
+									<p:commandButton value="Filtrar" actionListener="#{arquivoListBean.buscar}" update="tabela messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+
+				<br/>
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Arquivos Cadastrados"/> </span>
+				</div>
+
+				<br/><br/>
+
+				<p:dataTable
+					id="tabela"
+					var="arquivo"
+					value="#{arquivoListBean.lazyModel}"
+					emptyMessage="Nenhum arquivo encontrado"
+					sortBy="#{arquivo.id}"
+					lazy="true"
+					rows="10"
+					resizableColumns="true"
+					rowKey="#{arquivo.id}"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column styleClass="numero" width="7%">
+				    	<f:facet name="header">
+				    		<h:outputText value="Código"/>
+				    	</f:facet>
+						<h:outputText value="#{arquivo.id}"/>
+					</p:column>
+
+					<p:column>
+				    	<f:facet name="header">
+				    		<h:outputText value="Nome do Arquivo"/>
+				    	</f:facet>
+						<h:outputText value="#{arquivo.nome}"/>
+					</p:column>
+
+					<p:column headerText="Data de Registro" width="15%" styleClass="dados">
+						<h:outputText value="#{arquivo.dataRegistro}">
+							<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</h:outputText>
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+				<br />
+
+			</h:form>
+			
+		</div>
+	</ui:define>
+</ui:composition>

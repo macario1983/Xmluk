@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Upload de Arquivos XML"/> </span>
+			</div>
+			<br />
+
+			<h:form id="form">
+
+				<p:messages id="messagesAnexos"/>
+
+				<p:panelGrid id="panelAnexarArquivo" styleClass="panelGridCenter noBorders">
+					
+					<p:row>
+						<p:column colspan="2">
+		        			<p:outputLabel value="Arquivos Xml de Notas Fiscais"/>
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+					<p:row>
+						<p:column styleClass="columnRight">
+					  		<p:commandButton process="@this" oncomplete="dlgAnexarXml.show()" icon="botaoAnexo" styleClass="botaoImagem" title="Clique para anexar Xml"/>
+						</p:column>
+					</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+
+				<br/><br/>
+				
+				<p:dataTable
+
+					id="tabelaAnexos"
+					var="arquivo"
+					value="#{notaFiscalBean.listFilename}"
+					emptyMessage="Nenhum arquivo anexado"
+					lazy="true"
+					rows="20"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+
+					<f:facet name="header"> 
+						<p:panelGrid styleClass="panelGridCenter noBorders gridNoBackground">
+							<p:row>	
+								<p:column>
+			        				<h:outputText value="Arquivos xml anexado(s)"/>
+								</p:column>
+							</p:row>
+
+							<p:row>	
+								<p:column styleClass="columnRight">
+									<p:commandButton value="Processar" actionListener="#{notaFiscalBean.process()}" update="tabelaAnexos"/>
+								</p:column>
+							</p:row>
+						</p:panelGrid> 
+        			</f:facet>
+        			
+        			<p:column headerText="Nome do Arquivo">
+        				<p:outputLabel value="#{arquivo}"/>
+        			</p:column>
+        
+        		</p:dataTable>
+
+				<br />
+				<br />
+
+			</h:form>
+			
+			<h:form>
+				<p:dialog header="Arquivo(s) Xml" widgetVar="dlgAnexarXml" modal="true" resizable="false" closable="false" dynamic="true">
+					<h:form id="formDlgAnexarXml" enctype="multipart/form-data">
+						<p:messages id="messageDlgAnexarXml" showDetail="true"/>
+						<p:panelGrid styleClass="noBorders panelGridCenter gridNoBackground">
+							<p:row>
+								<p:column>
+									<p:fileUpload
+										fileUploadListener="#{notaFiscalBean.uploadFile}"
+										mode="advanced"
+										multiple="true"
+										sizeLimit="3000000"
+										allowTypes="/(\.|\/)(xml)$/"
+										cancelLabel="Cancelar"
+										uploadLabel="Enviar"
+										label="Selecionar"
+										widgetVar="uploadXml"
+										fileLimit="1000"
+									/>
+								</p:column>
+							</p:row>
+						</p:panelGrid>
+					</h:form>
+					<center>
+						<p:commandButton process="@this" value="Fechar" oncomplete="dlgAnexarXml.hide()" update=":form:panelAnexarArquivo :form:messagesAnexos :form:tabelaAnexos"/>
+					</center>
+				</p:dialog>
+			</h:form>			
+
+		</div>
+
+	</ui:define>
+</ui:composition>

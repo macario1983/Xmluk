@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="spring-pojo.xml"/>
+	
+	<bean id="hibernateDao" class="com.nfehost.dao.impl.HibernateDAOImpl" abstract="true">
+		<property name="usuarioDao" ref="usuarioDao"/>
+	</bean>
+	
+	<bean id="usuarioDao" class="com.nfehost.dao.impl.UsuarioDAOImpl" parent="hibernateDao" >
+		<property name="persistentClass" ref="usuarioPojo"/>		
+	</bean>
+	
+	<bean id="contatoDao" class="com.nfehost.dao.impl.ContatoDAOImpl" parent="hibernateDao">
+		<property name="persistentClass" ref="contatoPojo"/>		
+	</bean>
+	
+	<bean id="emitenteDao" class="com.nfehost.dao.impl.EmitenteDAOImpl" parent="hibernateDao">
+		<property name="persistentClass" ref="emitentePojo"/>		
+	</bean>
+
+	<bean id="destinatarioDao" class="com.nfehost.dao.impl.DestinatarioDAOImpl" parent="hibernateDao">
+		<property name="persistentClass" ref="destinatarioPojo"/>		
+	</bean>
+
+	<bean id="arquivoDao" class="com.nfehost.dao.impl.ArquivoDAOImpl" parent="hibernateDao">
+		<property name="persistentClass" ref="arquivoPojo"/>		
+	</bean>
+
+	<bean id="notaFiscalDao" class="com.nfehost.dao.impl.NotaFiscalDAOImpl" parent="hibernateDao">
+		<property name="persistentClass" ref="notaFiscalPojo"/>	
+	</bean>
+	
+	<bean id="anexoDao" class="com.nfehost.dao.impl.AnexoDAOImpl"/>
+	
+</beans>

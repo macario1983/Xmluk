@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/template/common/pagelayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+
+		<f:metadata>
+			<f:event listener="#{usuarioBean.load}" type="preRenderView"/>
+		</f:metadata>
+
+		<div id="content">
+
+			<h:form id="form" enctype="multipart/form-data">
+
+				<p:messages id="messages"/>
+				<p:focus />
+				<br/>
+
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Usuário" /> </span>
+				</div>
+
+				<p:panelGrid id="pnl_main" styleClass="panelGridCenter noBorders" style="width:50%">
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Login"/>
+						</p:column>
+
+						<p:column>
+							<p:inputText maxlength="10" size="15" label="Login" value="#{usuarioBean.pojo.login}" required="true"/>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="width:30%" styleClass="columnRight">
+							<p:outputLabel value="Senha"/>
+						</p:column>
+
+						<p:column>
+							<p:password maxlength="10" size="15" label="Senha" value="#{usuarioBean.pojo.senha}" required="true" feedback="true" promptLabel="Insira uma senha" weakLabel="Senha fraca" goodLabel="Senha média" strongLabel="Senha forte"/>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="width:30%" styleClass="columnRight">
+							<p:outputLabel value="Confirme a senha"/>
+						</p:column>
+
+						<p:column>
+							<p:password maxlength="10" size="15" label="Confirme a senha" value="#{usuarioBean.confirmPassword}" required="true" feedback="true" promptLabel="Insira uma senha" weakLabel="Senha fraca" goodLabel="Senha média" strongLabel="Senha forte"/>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="width:30%" styleClass="columnRight">
+							<p:outputLabel value="Nível"/>
+						</p:column>
+
+						<p:column>
+							<p:selectOneMenu value="#{usuarioBean.pojo.nivel}" label="Nível" converter="usuarioNivelConverter" required="true">
+								<f:selectItem itemLabel="" itemValue="#{null}" noSelectionOption="true"/>
+								<f:selectItems var="nivel" value="#{usuarioBean.helper.niveisUsuario}" itemLabel="#{nivel.descricao}"/>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+
+				</p:panelGrid>
+
+				<div align="center">
+					<p:commandButton id="salvar" type="Submit" value="Salvar" action="#{usuarioBean.save}" update="messages @parent" oncomplete="window.scrollTo(0, 0);"/>
+					&nbsp;&nbsp;
+					<p:commandButton type="button" value="Cancelar" onclick="cancelConfirmationForm.show()"/>
+				</div>
+				
+			</h:form>
+
+			<p:confirmDialog id="confirmDialogCancelForm" message="Deseja cancelar?" header="Cancelar" severity="alert" widgetVar="cancelConfirmationForm">
+				<p:commandButton process="confirmDialogCancelForm" value="Sim" action="#{usuarioBean.cancelar}" oncomplete="cancelConfirmationForm.hide()"/>
+				<p:commandButton type="button" value="Não" onclick="cancelConfirmationForm.hide()"/>
+			</p:confirmDialog>
+
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>

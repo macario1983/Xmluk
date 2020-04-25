@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<f:metadata>
+				<f:event listener="#{usuarioListBean.helper.fillDefaults()}" type="preRenderView" />
+			</f:metadata>
+			
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Filtro de Usuários"/> </span>
+			</div>
+			<br />
+
+			<h:form id="list">
+
+				<p:messages id="messages"/>
+
+				<p:panelGrid styleClass="panelGridCenter noBorders">
+						
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Login"/>
+						</p:column>
+
+						<p:column>
+							<p:inputText maxlength="10" size="15" label="Login" value="#{usuarioListBean.filter.username}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="width:30%" styleClass="columnRight">
+							<p:outputLabel value="Nível"/>
+						</p:column>
+
+						<p:column>
+							<p:selectOneMenu value="#{usuarioListBean.filter.nivel}" label="Nível" converter="usuarioNivelConverter">
+								<f:selectItem itemLabel="" itemValue="#{null}" noSelectionOption="true"/>
+								<f:selectItems var="nivel" value="#{usuarioBean.helper.niveisUsuario}" itemLabel="#{nivel.descricao}"/>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<div align="left">
+									<h:commandLink value="Salvar em pdf" disabled="#{empty usuarioBean.lazyModel}">
+										<p:dataExporter type="pdf" target="tabela" fileName="usuario" encoding="CP1252"/> 
+									</h:commandLink>
+								</div>
+								<div align="right">
+									<p:commandButton value="Filtrar" actionListener="#{usuarioListBean.buscar}" update="tabela messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+				</p:panelGrid>
+
+				<br/>
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Usuários Cadastrados"/> </span>
+				</div>
+
+				<p:button outcome="form" value="Novo usuário" styleClass="noFormat" rendered="#{loginBean.administrador}">
+					<f:param name="modo" value="create" />
+				</p:button>
+
+				<br/><br/>
+
+				<p:dataTable
+					id="tabela"
+					var="usuario"
+					value="#{usuarioListBean.lazyModel}"
+					emptyMessage="Nenhum usuário encontrado"
+					sortBy="#{usuario.id}"
+					lazy="true"
+					rows="10"
+					resizableColumns="true"
+					rowKey="#{usuario.id}"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column headerText="Código">
+				    	<f:facet name="header">
+				    		<h:outputText value="Código"/>
+				    	</f:facet>
+						<h:outputText value="#{usuario.id}"/>
+					</p:column>
+
+					<p:column headerText="Login">
+				    	<f:facet name="header">
+				    		<h:outputText value="Login"/>
+				    	</f:facet>
+						<h:outputText value="#{usuario.login}"/>
+					</p:column>
+
+					<p:column headerText="Nível">
+				    	<f:facet name="header">
+				    		<h:outputText value="Nível"/>
+				    	</f:facet>
+						<h:outputText value="#{usuario.nivel.descricao}"/>
+					</p:column>
+
+					<p:column exportable="false" rendered="#{loginBean.administrador}">
+						<f:facet name="header">
+							<h:outputText value="Ação"/>
+						</f:facet>
+						<center>
+							<p:button outcome="form" styleClass="botaoImagem" icon="botaoEditar" title="Editar">
+								<f:param name="modo" value="update"/>
+								<f:param name="id" value="#{usuario.id}"/>
+							</p:button>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<p:commandButton id="btnExcluirVinculacao" process="btnExcluirVinculacao" icon="botaoExcluir" styleClass="botaoImagem" action="#{usuarioListBean.setPojoId(usuario.id)}" oncomplete="confirmationUsuarioExclusao.show()" title="Excluir"/>
+						</center>
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+				<br />
+
+			</h:form>
+			
+			<p:confirmDialog showEffect="true" message="Deseja realmente excluir este usuário?" header="Confirmação de exclusão" widgetVar="confirmationUsuarioExclusao">  
+       			<p:commandButton id="btnConfirm" process="btnConfirm" value="Sim" action="#{usuarioListBean.remove}" oncomplete="confirmationUsuarioExclusao.hide()" update=":list:tabela :list:messages"/>
+	        	<p:commandButton id="decline" type="button" value="Não" onclick="confirmationUsuarioExclusao.hide()"  />   
+			</p:confirmDialog>
+			
+			
+		</div>
+	</ui:define>
+</ui:composition>

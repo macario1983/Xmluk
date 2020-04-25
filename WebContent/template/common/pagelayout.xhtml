@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:ez="http://java.sun.com/jsf/composite">
+   
+   <h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<h:outputScript name="global.js" library="javascript"/>
+		<h:outputScript name="validacao.js" library="javascript"/>
+		<h:outputScript name="restricoes_de_campos.js" library="javascript"/>
+		<h:outputStylesheet name="global.css" library="css"/>
+		
+	    <ui:insert name="scriptexclusivo">
+			
+		</ui:insert>
+	</h:head>
+	
+   
+	<h:body>
+    	<div id="layout">
+
+		    <!-- CABEÇALHO - INÍCIO -->
+		    <ui:insert name="header">
+		      <ui:include src="header.xhtml"/>
+		    </ui:insert>
+		    <!-- CABEÇALHO - FIM -->
+		
+		    <!-- CORPO - INÍCIO -->
+		    <ui:insert name="content">
+		      <ui:include src="content.xhtml"/>
+		    </ui:insert>
+		    <!-- CORPO - FIM -->
+		
+		    <!-- RODAPÉ - INÍCIO -->
+		    <ui:insert name="footer">
+		      <ui:include src="footer.xhtml"/>
+		    </ui:insert>
+		    <!-- RODAPÉ - FIM -->
+		</div>
+	</h:body>
+	
+</html>

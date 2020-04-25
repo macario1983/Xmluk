@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="E-mail"/> </span>
+			</div>
+			<br />
+
+			<h:form id="form">
+
+				<p:messages id="messages"/>
+				
+				<p:fieldset legend="Contatos" toggleable="true" toggleSpeed="500" style="width:75%">
+
+					<p:ajax event="toggle"/>
+					<p:panelGrid styleClass="panelGridCenter noBorders">
+						
+						<p:row>
+							<p:column>
+								<p:panelGrid id="panelContato" styleClass="panelGridCenter noBorders">
+									<p:row>
+										<p:column styleClass="columnRight">
+											<p:outputLabel value="Emitente"/>
+										</p:column>
+				
+										<p:column>
+											<p:selectOneMenu value="#{emailListBean.filter.emitenteContato}" label="Emitente" converter="emitenteConverter" filter="true" filterMatchMode="contains">
+												<f:selectItem itemLabel="" itemValue="#{null}" noSelectionOption="true"/>
+												<f:selectItems var="emitente" value="#{emailListBean.helper.listEmitentesWithContato}" itemLabel="#{emitente.dadosEmpresa.cnpj} - #{emitente.dadosEmpresa.razaoSocial}"/>
+											</p:selectOneMenu>
+										</p:column>
+									</p:row>
+									
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="2">
+													<div align="right">
+														<p:commandButton value="Filtrar" actionListener="#{emailListBean.getListContatos()}" update="tabelaContatos messages"/>
+													</div>
+												</p:column>
+											</p:row>
+										</f:facet>
+								</p:panelGrid>
+							</p:column>
+						</p:row>
+						<p:row>	
+							<p:column>				
+								<p:panelGrid styleClass="panelGridCenter noBorders">
+									<p:row>
+										<p:column colspan="2">
+											<p:dataTable
+												id="tabelaContatos"
+												var="contato"
+												value="#{emailListBean.listContatos}"
+												selection="#{emailListBean.filter.listContatos}"
+												selectionMode="multiple"
+												emptyMessage="Nenhum contato encontrado"
+												rows="5"
+												rowKey="#{contato.id}"
+												paginator="true"
+												paginatorPosition="bottom"
+												paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+												rowsPerPageTemplate="5,10,15">
+												
+												<p:ajax event="rowSelect" listener="#{emailListBean.onRowSelectContato()}" update=":form:panelEmail"/>
+												
+												<p:column headerText="Nome">
+													<h:outputText value="#{contato.nome}"/>
+												</p:column>
+				
+												<p:column headerText="Email">
+													<h:outputText value="#{contato.email}"/>
+												</p:column>
+							
+												<p:column headerText="Telefone">
+													<h:outputText value="#{contato.telefone}"/>
+												</p:column>
+												
+											</p:dataTable>
+										</p:column>
+									</p:row>
+								</p:panelGrid>
+							</p:column>
+						</p:row>
+					</p:panelGrid>				
+				</p:fieldset>
+
+				<br/>
+				
+				<p:fieldset legend="E-mail" toggleable="true" toggleSpeed="500" style="width:75%">
+
+					<p:ajax event="toggle"/>
+					<p:panelGrid id="panelEmail" styleClass="panelGridCenter noBorders">
+					
+						<p:row>
+							<p:column styleClass="columnRight">
+								<p:outputLabel value="Para"/>
+							</p:column>
+	
+							<p:column>
+						  		<p:inputText id="para" label="Para" size="60" value="#{emailListBean.contato}"/>
+							</p:column>
+	
+							<p:column styleClass="columnRight">
+								<p:commandLink actionListener="#{emailListBean.showListener()}" update="panelEmail" value="Mais"/>
+							</p:column>
+						</p:row>
+						
+						<p:row rendered="#{emailListBean.show}">
+							<p:column styleClass="columnRight">
+								<p:outputLabel value="CC"/>
+							</p:column>
+	
+							<p:column rendered="#{emailListBean.show}">
+						  		<p:inputText id="copia" size="60" value="#{emailListBean.contatoCopia}"/>
+							</p:column>
+						</p:row>
+	
+						<p:row rendered="#{emailListBean.show}">
+							<p:column styleClass="columnRight">
+								<p:outputLabel value="CCO"/>
+							</p:column>
+	
+							<p:column rendered="#{emailListBean.show}">
+						  		<p:inputText id="oculta" size="60" value="#{emailListBean.copiaOculta}"/>
+							</p:column>
+						</p:row>
+	
+						<p:row>
+							<p:column styleClass="columnRight">
+								<p:outputLabel value="Título"/>
+							</p:column>
+	
+							<p:column>
+						  		<p:inputText label="Título" size="60" value="#{emailListBean.titulo}"/>
+							</p:column>
+						</p:row>
+	
+						<p:row>
+							<p:column styleClass="columnRight">
+								<p:outputLabel value="Mensagem"/>
+							</p:column>
+	
+							<p:column>
+						  		<p:inputTextarea label="Mensagem" cols="80" rows="10" value="#{emailListBean.mensagem}"/>
+							</p:column>
+						</p:row>
+	
+						<f:facet name="footer">
+							<p:row>
+								<p:column colspan="2">
+									<div align="right">
+										<p:commandButton value="Enviar" actionListener="#{emailListBean.enviar()}" update="panelEmail messages"/>
+									</div>
+								</p:column>
+							</p:row>
+						</f:facet>
+	
+					</p:panelGrid>
+
+				</p:fieldset>
+				
+				<br/>
+				
+				<p:fieldset id="fieldNota" legend="Nota Fiscal" toggleable="true" toggleSpeed="500" style="width:75%">
+
+					<p:ajax event="toggle"/>
+					<p:panelGrid id="panelNotaFiscal" styleClass="panelGridCenter noBorders">
+	
+						<p:row>
+							<p:column>
+								<p:panelGrid styleClass="panelGridCenter noBorders">
+								
+									<p:row>
+										<p:column>
+											<p:outputLabel value="Emitente"/>
+										</p:column>
+				
+										<p:column>
+											<p:selectOneMenu value="#{emailListBean.filter.emitenteNota}" label="Emitente" converter="emitenteConverter" filter="true" filterMatchMode="contains">
+												<f:selectItem itemLabel="" itemValue="#{null}" noSelectionOption="true"/>
+												<f:selectItems var="emitente" value="#{emailListBean.helper.listEmitentes}" itemLabel="#{emitente.dadosEmpresa.cnpj} - #{emitente.dadosEmpresa.razaoSocial}"/>
+											</p:selectOneMenu>
+										</p:column>
+									</p:row>
+									
+									<p:row>
+										<p:column>
+											<p:outputLabel value="Numero da Nota Fiscal"/>
+										</p:column>
+										
+										<p:column>
+											<p:inputText maxlength="10" size="15" value="#{emailListBean.filter.numeroNota}" onkeypress="mascara(this,soNumeros)"/>
+										</p:column>
+									</p:row>
+				
+									<p:row>
+										<p:column styleClass="columnRight">
+											<p:outputLabel value="Data de Emissão da Nota Fiscal"/>
+										</p:column>
+										
+										<p:column>
+											<p:panelGrid>
+												<p:row>
+													<p:column styleClass="noPadding">
+														<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" label="Data de Emissão da Nota Fiscal Inicial" value="#{emailListBean.filter.dataEmissaoNotaInicial}"/>
+													</p:column>
+							
+													<p:column>
+														<p:outputLabel value="à"/>
+													</p:column>
+				
+													<p:column>
+														<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" label="Data de Emissão da Nota Fiscal Final" value="#{emailListBean.filter.dataEmissaoNotaFinal}"/>
+													</p:column>
+												</p:row>
+											</p:panelGrid>
+										</p:column>
+									</p:row>
+				
+									<f:facet name="footer">
+										<p:row>
+											<p:column colspan="2">
+												<div align="right">
+													<p:commandButton value="Filtrar" actionListener="#{emailListBean.getListNotasFiscais()}" update="tabelaNotasFiscais messages"/>
+												</div>
+											</p:column>
+										</p:row>
+									</f:facet>
+									
+								</p:panelGrid>
+								
+									<br/><br/>
+								
+								<p:panelGrid styleClass="panelGridCenter noBorders">
+									<p:row>
+										<p:column>
+											<p:dataTable
+							
+												id="tabelaNotasFiscais"
+												var="notaFiscal"
+												value="#{emailListBean.listNotasFiscais}"
+												selection="#{emailListBean.filter.listNotasFiscais}"
+												selectionMode="multiple"
+												emptyMessage="Nenhuma nota fiscal cadastrada"
+												lazy="true"
+												rows="10"
+												rowKey="#{notaFiscal.id}"
+												paginator="true"
+												paginatorPosition="bottom"
+												paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+												rowsPerPageTemplate="5,10,15">
+															
+													<p:ajax event="rowSelect" listener="#{emailListBean.onRowSelectNotaFiscal()}"/>
+
+												    <p:column headerText="Razão Social - CNPJ">
+											            <h:outputText value="#{notaFiscal.emitente.dadosEmpresa.razaoSocial} - #{notaFiscal.emitente.dadosEmpresa.cnpj}" />
+											        </p:column>
+										         
+													<p:column headerText="Numero da Nota Fiscal">
+														<h:outputText value="#{notaFiscal.numero}"/>
+													</p:column>
+							
+													<p:column headerText="Série da Nota Fiscal">
+														<h:outputText value="#{notaFiscal.serie}"/>
+													</p:column>
+							
+													<p:column headerText="Data de Emissão">
+														<h:outputText value="#{notaFiscal.dataEmissao}">
+															<f:convertDateTime pattern="dd/MM/yyyy" />
+														</h:outputText>
+													</p:column>
+							        		</p:dataTable>								
+										</p:column>
+									</p:row>	
+								</p:panelGrid>	
+							</p:column>
+						</p:row>
+					</p:panelGrid>				
+				</p:fieldset>				
+				<br/><br/>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

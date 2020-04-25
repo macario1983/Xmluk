@@ -1,0 +1,506 @@
+/* ------------------------------------------ */
+body, html {height:100%;}
+body {font-family:"Trebuchet MS", Arial, Verdana;margin:0px;padding:0px;background-image:url("#{resource['images:header_bkg.jpg']}");background-repeat:repeat-x;}
+body, td, label, th, p, input, textarea, select {font-size:12px;}
+
+img {border:0px;}
+
+/*Botão*/
+input.button-green {background: orange; color: white; font: bold 10px Verdana; border: 0; border-radius: 6px; padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px}
+
+a {color:#00F;text-decoration:underline;}
+a:hover {color:#090;}
+
+hr {color:#FFF;padding:0px;margin:0px;border-top-width:2px;border-top-style:solid;border-top-color:orange;border-right-width:0px;border-right-style:none;border-bottom-width:0px;border-bottom-style:none;border-left-width:0px;border-left-style:none;}
+/* ------------------------------------------ */
+#layout {position:relative;min-height:100%;height:auto !important;height:100%;}
+#left {float:left;width:238px;font-family:"Trebuchet MS", Arial, Verdana;font-size:12px;}
+#right {margin-left:238px;padding-bottom:1px;}
+/* ------------------------------------------ */
+body.modal {height:auto;background-image:none;}
+body.modal #layout {margin:15px;position:static;height:auto !important;}
+/* ------------------------------------------ */
+#logo_ecob {height:46px;margin-top:18px;margin-left:10px;}
+#logo_client {text-align:center;height:87px;width:207px;padding:20px 10px 0 10px;margin-bottom:8px;margin-left:11px;background-image:url("#{resource['images:header_logo_bkg.jpg']}") !important;font-family:"Trebuchet MS", Arial, Verdana;font-size:12px;}
+#logo_ecredc {text-align:right;height:43px;padding-top:4px;padding-right:6px;font-family:"Trebuchet MS", Arial, Verdana;font-size:12px;}
+/* ------------------------------------------ */
+#menu_a {height:18px;font-family:"Trebuchet MS", Arial, Verdana;font-size:12px;}
+#menu_a span {color:#AA8E5F;display:block;float:right;padding-top:1px;margin-right:15px;}
+#menu_a a {font-weight:bold;color:#774A07;text-decoration:none;height:17px;display:block;float:right;padding:1px 15px 0 17px;background-image:url("#{resource['images:menu_a_div.jpg']}");background-repeat:no-repeat;}
+#menu_a a#b_logout {background-color:#E3DCA6;}
+#menu_a a:hover {background-color:#D2C773 !important;}
+/* ------------------------------------------ */
+#menu_b {height:5px;margin-top:47px;margin-bottom:1px;}
+/* ------------------------------------------ */
+#content{padding:0px 20px 65px 20px;}
+#contentFullLayout{padding:0px 5px 0px 5px;}
+/* ------------------------------------------ */
+#footer {height:45px;width:100%;position:absolute;bottom:0;background-color:#F2F2F2;}
+#footer_content {text-align:center;height:29px;padding-top:10px;margin:0 10px;border-bottom-width:6px;border-bottom-style:solid;border-bottom-color:#F16929;font-family:"Trebuchet MS", Arial, Verdana;font-size:12px;}
+#footer_content span {display:block;position:absolute;left:20%;right:20%;}
+#footer_logo_left {float:left;margin-left:10px;}
+#footer_logo_right {float:right;margin-right:10px;}
+/* ------------------------------------------ */
+form {padding:0px;margin:0 0 20px 0;}
+input, textarea, select {font-family:"Trebuchet MS", Arial, Verdana;font-size:12px;color:#333;border:1px solid #CCC;background-image:url("#{resource['images:input_bkg.jpg']}");background-repeat:repeat-x;}
+input.noFormat {border:none;background-image:none;}
+input.checkbox {margin:0;padding:0;}
+table.form th {text-align:right;background-color:#F2F2F2;}
+table.form span {color:#999;}
+table.form .right {float:right;}
+/*table.form label {text-align:right;background-color:#F2F2F2;}*/ /*incluido por glauber*/
+table.form td.colunaEsq {text-align:right;background-color:#F2F2F2;font-weight:bold;}
+table.form td.colunaDir {}
+/* ------------------------------------------ */
+.form_title {height:27px;margin-bottom:15px;background-image:url("#{resource['images:form_title_bkg.jpg']}");background-repeat:repeat-x;background-position:center bottom;} /*url da imagem corrigida*/
+.form_title a,
+.form_title span {color:#F59668;text-decoration:none;margin:0 15px;display:block;float:left; font-weight:bold; font-size:14px;}
+.form_title a:hover {text-decoration:underline;}
+.form_title .active {padding-bottom:11px;background-image:url("#{resource['images:form_title_active.jpg']}");background-repeat:no-repeat;background-position:center bottom;} /*url da imagem corrigida*/
+.form_title a.active:hover {text-decoration:none;}
+/* ------------------------------------------ */
+table.grid th,
+
+table.grid td {border-left-width:1px;border-left-style:solid;border-left-color:#CCC;}
+table.grid th.first,
+table.grid td.first {border-left-width:0px;}
+table.grid th.title {background-color:#518037;background-image:url("#{resource['images:table_title.jpg']}");} /*url da imagem corrigida*/
+table.grid th {color:#FFF;background-color:orange;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#FFF;} /*background-image:url("#{resource['images:table_th.jpg']}"); (removida)*/
+table.grid tr.impar {background-color:#F2F2F2;}
+table.grid tr.noFormat {background-color:transparent;} /*incluido por glauber*/
+/* ------------------------------------------ */
+div.numeration {text-align:center;}
+div.right {text-align:right;}
+/* ------------------------------------------ */
+li.alert_1 {list-style: none;font-size: 11px;font-weight: bold;color: #FFFFFF;text-align: center;padding: 2px;margin: 0 80px 15px 80px;background-color: #00B000;}
+li.alert_2 {list-style:none;font-size:11px;font-weight:bold;color:#FFFFFF;text-align:center;padding:2px;margin:0 80px 15px 80px;background-color:#FF9933;}
+li.alert_3 {list-style:none;font-size:11px;font-weight:bold;color:#FFFFFF;text-align:center;padding:2px;margin:0 80px 15px 80px;background-color:#FF0000;}
+/* ------------------------------------------ */
+table.third th {text-align:center;background-color:#F2F2F2;} /*incluido por glauber*/
+
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {cursor:pointer; background-color:orange; background-image:none;}
+
+input[type="submit"] {background: orange; color: white; font: bold 10px Verdana; border: 0; border-radius: 6px; padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px}
+
+input[type="reset"] {background: orange; color: white; font: bold 10px Verdana; border: 0; border-radius: 6px; padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px}
+
+input[type="button"] {background: orange; color: white; font: bold 10px Verdana; border: 0; border-radius: 6px; padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px}
+
+input[type="submit"][disabled] {color: gray;}
+
+/* CSS para RichFaces */
+/* Cabeçalho do poppanel (modal) */ 
+.rf-pp-hdr {;background-color:#72B14B;background-image:url("#{resource['images:table_th.jpg']}");}
+.rf-pp-hdr-cnt {color:#FFFFFF;}
+
+/*dataScroller*/
+.rf-ds-btn{background-image:url("#{resource['images:table_th.jpg']}");background-color:#72B14B;border:0;}
+
+/*extendedDataTable*/
+.rf-edt {border-left-width:1px;border-left-style:solid;border-left-color:#CCC; width:527px;}
+.rich-edt-cnt, 
+.rf-edt-c {border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#FFF;}
+.rf-edt-tbl-hdr {border-left-width:0px;}
+.rich-edt-hdr, 
+.rf-edt-hdr-c {background-color:#72B14B;}
+
+
+/*Tab*/	
+ul#tabs {height:27px;margin-bottom:15px;background-image:url("#{resource['images:form_title_bkg.jpg']}");background-repeat:repeat-x;background-position:center bottom;} /*url da imagem corrigida*/
+ul#tabs li { display: inline; }
+ul#tabs li a {color:orange;text-decoration:none;margin:0 15px;display:block;float:left; font-weight:bold; font-size:14px; }
+ul#tabs li a:hover {text-decoration:underline;}
+ul#tabs li a.active {padding-bottom:11px;background-image:url("#{resource['images:form_title_active.jpg']}");background-repeat:no-repeat;background-position:center bottom;} /*url da imagem corrigida*/
+ul#tabs li a.active:hover {text-decoration:none;}
+div.tabContent { display:block;}
+div.tabContent.hide { display: none; }
+
+/* CSS para Boleto */
+TD.codbanco { border-left: 2px solid black; border-right: 2px solid black; }
+.banco      { font: bold   16px 'Times New Roman'; margin-left: 4px; margin-right: 14px }
+.codbanco   { font: bold   15px 'Arial'; padding-left: 5px; padding-right: 5px; }
+.linhadig   { font: normal 15px 'Times New Roman'; margin-left: 4px; }
+.campo      { font: normal  8px 'Times New Roman'; margin-left: 4px; }
+.valor      { font: normal 10px 'Times New Roman'; margin-left: 4px; }
+.aut        { font: normal  8px 'Times New Roman'; margin-left: 4px; }
+IMG.codb    { margin: 5px; margin-left: 10px; }
+PRE         { page-break-after: always; font-size: 1px }
+
+/* CSS para Login */
+.login-head	{ font: bold 20px 'Arial'; }
+.login-error{ font: normal 10px 'Arial'; color: red; }
+
+/* rich calendar */
+.everyThirdDay {
+    background-color: gray;
+}
+ 
+.weekendBold {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Menu e Sub-menus------------------------------------------ */
+
+ul.menubar 
+{ 
+   margin: 0px; 
+   padding: 0px; 
+   /*background-color: #FFFFFF;*/ /* IE6 Bug */ 
+   font-size: 100%; 
+   } 
+
+ul.menubar .menuvertical 
+{ 
+   margin: 0px; 
+         padding: 0px; 
+         list-style: none; 
+ 
+   border: 1px solid #ccc; 
+   float:left; 
+   background-image:url("#{resource['images:header_bkg_2.jpg']}");
+	background-repeat:repeat-x;
+} 
+
+ul.menubar ul.menu 
+{ 
+   display: none; 
+   position: absolute; 
+   margin: 0px; 
+} 
+
+ul.menubar a 
+{ 
+   display:block; 
+   text-decoration: none; 
+   color:#333; 
+   
+   height:18px;
+	padding:1px 15px 0 17px;
+	background-image:url("#{resource['images:menu_b_div.jpg']}");
+	background-repeat:no-repeat;
+} 
+
+
+ul.menu, 
+ul.menu ul 
+{ 
+   margin: 0; 
+   padding: 0; 
+ 
+   width: 200px; /* Width of Menu Items */ 
+   /*background-color: #FFFFFF;*/ /* IE6 Bug */ 
+} 
+
+ul.menu li 
+{ 
+   position: relative; 
+   list-style: none; 
+   border: 0px;
+   white-space: nowrap; 
+} 
+
+ul.menu li a 
+{ 
+	display: block; 
+	text-decoration: none; 
+	border: 1px solid #ccc; 
+	border-bottom: 0px;
+	padding: 5px 10px 5px 5px; 
+   
+	height:11px;
+	font-weight:bold;
+	color:#333;
+	background-image:url("#{resource['images:header_bkg_2.jpg']}");
+	background-repeat:repeat-x;
+
+} 
+
+/* Fix IE. Hide from IE Mac \*/ 
+* html ul.menu li { float: left; height: 1%; } 
+* html ul.menu li a { height: 1%; } 
+/* End */ 
+
+ul.menu ul 
+{ 
+   position: absolute; 
+   display: none; 
+   left: 199px; /* Set 1px less than menu width */ 
+   top: 0px; 
+} 
+
+ul.menu li.submenu ul { display: none; } /* Hide sub-menus initially */ 
+
+ul.menu li.submenu { background: transparent url(arrow.gif) right center no-repeat; } 
+
+ul.menu li a:hover { color: #E2144A; }
+
+fieldset {
+	border: 1px solid #F06929;
+	height: auto;
+	display: block;
+	padding: 8px;
+	width: 400px;
+  	margin:auto;
+}
+
+legend {
+	font: bold 10px verdana;
+	color: black;
+	display: block;
+	-webkit-padding-start: 2px;
+	-webkit-padding-end: 2px;
+	border: none;
+}
+
+/*----------------------------------------*/
+
+/*Configuração para PrimeFaces*/
+
+ul.ui-menu-child{
+     width: 200px !important;
+}
+
+.noBorders tr, .noBorders td {
+    border: none !important;
+    border-spacing: 0px !important;   
+}
+
+.bordersNoWidth tr, .bordersNoWidth td {
+	border: none !important;
+	border-spacing: 0px !important;
+}
+
+.dataTableNoBorders table tr, .dataTableNoBorders table td {
+    border: 0 !important;
+    border-spacing: 0px !important;   
+    
+}
+
+.alinharTabela tr, .alinharTabela td {
+	padding-bottom: 0px !important;
+	padding-left: 0px !important;
+	padding-top: 0px !important;
+	height: 15px !important;
+	border-spacing: 0px !important;
+}
+
+.noBordersOut tr {
+    border: none !important;
+}
+
+.noBordersIn td {
+    border: none !important;
+}
+
+.coluna1 { 
+	text-align: right;
+	background-color:#F2F2F2;
+	font-weight: bold;
+} 
+
+.coluna2 { 
+	text-align: left;
+}
+
+.columnLeft {
+	text-align: left;
+}
+
+.columnRight{
+	text-align: right;
+}
+
+.columnCenter{
+	text-align: center;
+}
+
+.noHeader table thead tr {
+    display: none;
+}
+
+.withHeader table thead tr {
+    display: table-row-group;
+}
+
+.ui-inputfield[disabled] {
+    opacity: .50 !important;
+    color: black;
+
+}
+
+.panelGridCenter {
+    margin: 0 auto;
+}
+
+.gridNoBackground tr{
+    background: transparent;
+    background-color: transparent;
+}
+
+.campoLabel {
+	width: 30%;
+}
+
+.campoInput {
+	width: 70%;
+}
+
+.ui-tabs{
+ background: white;
+ background-color: white;
+ 
+}
+
+.disable-scroll .ui-dialog-content {
+  overflow: hidden !important;
+}
+
+.panelAsContainer {
+	background: white;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	border: none;
+}
+
+.selectOneRadioColumn tr, .selectOneRadioColumn td {
+	border: none !important;
+	padding-bottom: 0px !important;
+	padding-left: 0px !important;
+	padding-top: 0px !important;
+}
+
+.fieldset {
+	border: 1px solid #F06929;
+	background: white;
+	width: auto;
+}
+
+.fileinput-button{
+    overflow: visible !important;
+}
+
+.fileupload-buttonbar .ui-button input{
+    top: -150px !important;
+}
+
+.layoutFix {
+      display: table;
+      height: 100%;
+      width: 100%;
+   }
+   
+.ui-layout-unit .ui-layout-unit-content {
+    padding-bottom: 0px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	padding-top: 0px !important;
+}
+
+.ui-layout-unit {
+	padding-bottom: 0px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	padding-top: 0px !important;
+}
+
+.noPadding {
+	padding: 0px !important;
+}
+
+.noMargin {
+	margin: 0px !important;
+}
+
+.tabPadding .ui-tabs-panel {
+	padding-bottom: 5px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	padding-top: 5px !important;
+}
+
+.myLayoutStyleClass .ui-layout-unit-content{
+   background: transparent;
+}
+
+.ui-top, .ui-top .ui-layout, .ui-top .ui-layout-bd, .ui-top .ui-layout-unit {
+    background-image: none;
+    background-color: transparent;
+}
+
+.ui-layout-bd {
+   border: 0 !important;
+}
+
+.ui-datatable.borderless .ui-datatable-data {
+	border:none !important;
+}
+
+/*----------------------------------------*/
+
+.botaoEditar{
+	background-image: url("#{resource['images:edit-icon.png']}") !important;
+}
+
+.botaoExcluir{
+	background-image: url("#{resource['images:delete-icon.png']}") !important;
+}
+
+.botaoLog{
+	background-image: url("#{resource['images:log.png']}") !important;
+}
+
+.botaoAnexo{
+	background-image: url("#{resource['images:add_anexo-icon.png']}") !important;
+}
+
+.botaoAbrir{
+	background-image: url("#{resource['images:open-icon.png']}") !important;
+}
+
+.botaoRelatorio{
+	background-image: url("#{resource['images:report-icon.jpg']}") !important;
+}
+
+.botaoImagem{
+	width: 16px !important;
+	height: 16px !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	border: none !important;
+}
+
+.noBackground {
+	background-color: white !important;
+	background: white !important;
+}
+
+.dataTableNoBackground table tr{
+	background-color: white !important;
+	background: white !important;
+}
+
+.gridAlignTop {
+	vertical-align: top;
+}
+
+div#centralizaVertical {
+	width: 980px;
+	height: 180px;
+	vertical-align: middle;
+	display: table-cell;
+ }
+ 
+ .numero {
+ 	text-align: right; 
+ }
+ 
+ .letra {
+ 	text-align: left; 
+ }
+ 
+ .dados {
+  	text-align: center; 
+ }

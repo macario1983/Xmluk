@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+<import resource="spring-pojo.xml"/>
+<import resource="spring-service.xml"/>
+<import resource="spring-filter.xml"/>
+<import resource="spring-helper.xml"/>
+
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+	    <property name="scopes">
+	        <map>
+	            <entry key="view">
+	                <bean class="com.nfehost.framework.ViewScope"/>
+	            </entry>
+	        </map>
+	    </property>
+	</bean>
+	
+	<bean id="managerBean" class="com.nfehost.view.ManagerBean" abstract="true" scope="session">
+		<property name="helper" ref="abstractHelper"/>
+		<property name="loginBean" ref="loginBean"/>
+	</bean>
+
+	<bean id="loginBean" class="com.nfehost.view.LoginBean" scope="session">
+		<property name="service" ref="usuarioService"/>
+		<property name="helper" ref="usuarioHelper"/>
+		<property name="usuario" ref="usuarioPojo"/>
+	</bean>
+	
+	<bean id="contatoBean" class="com.nfehost.view.ContatoBean" scope="view">
+		<property name="service" ref="contatoService"/>
+		<property name="helper" ref="contatoHelper"/>
+		<property name="pojo" ref="contatoPojo"/>
+	</bean>
+	
+	<bean id="contatoListBean" class="com.nfehost.view.ContatoListBean" parent="contatoBean" scope="view">
+		<property name="filter" ref="contatoFilter"/>
+	</bean>
+	
+	<bean id="notaFiscalBean" class="com.nfehost.view.NotaFiscalBean" scope="view">
+		<property name="service" ref="notaFiscalService"/>
+		<property name="helper" ref="notaFiscalHelper"/>
+		<property name="pojo" ref="notaFiscalPojo"/>
+	</bean>
+	
+	<bean id="notaFiscalListBean" class="com.nfehost.view.NotaFiscalListBean" parent="notaFiscalBean" scope="view">
+		<property name="filter" ref="notaFiscalFilter"/>
+	</bean>
+
+	<bean id="emitenteBean" class="com.nfehost.view.EmitenteBean" scope="view">
+		<property name="service" ref="emitenteService"/>
+		<property name="helper" ref="emitenteHelper"/>
+		<property name="pojo" ref="emitentePojo"/>
+	</bean>
+	
+	<bean id="emitenteListBean" class="com.nfehost.view.EmitenteListBean" parent="emitenteBean" scope="view">
+		<property name="filter" ref="emitenteFilter"/>
+	</bean>
+
+	<bean id="destinatarioBean" class="com.nfehost.view.DestinatarioBean" scope="view">
+		<property name="service" ref="destinatarioService"/>
+		<property name="helper" ref="destinatarioHelper"/>
+		<property name="pojo" ref="destinatarioPojo"/>
+	</bean>
+	
+	<bean id="destinatarioListBean" class="com.nfehost.view.DestinatarioListBean" parent="destinatarioBean" scope="view">
+		<property name="filter" ref="destinatarioFilter"/>
+	</bean>
+
+	<bean id="arquivoBean" class="com.nfehost.view.ArquivoBean" scope="view">
+		<property name="service" ref="arquivoService"/>
+		<property name="helper" ref="arquivoHelper"/>
+		<property name="pojo" ref="arquivoPojo"/>
+	</bean>
+
+	<bean id="arquivoListBean" class="com.nfehost.view.ArquivoListBean" parent="arquivoBean" scope="view">
+		<property name="filter" ref="arquivoFilter"/>
+	</bean>
+
+	<bean id="usuarioBean" class="com.nfehost.view.UsuarioBean" scope="view">
+		<property name="service" ref="usuarioService"/>
+		<property name="helper" ref="usuarioHelper"/>
+		<property name="pojo" ref="usuarioPojo"/>
+	</bean>
+
+	<bean id="usuarioListBean" class="com.nfehost.view.UsuarioListBean" parent="usuarioBean" scope="view">
+		<property name="filter" ref="usuarioFilter"/>
+	</bean>
+
+	<bean id="emailListBean" class="com.nfehost.view.EmailListBean" scope="view">
+		<property name="helper" ref="emailHelper"/>
+		<property name="filter" ref="emailFilter"/>
+	</bean>
+
+	<bean id="anexoBean" class="com.nfehost.view.AnexoBean" scope="singleton">
+		<property name="service" ref="anexoService"/>
+		<property name="emailService" ref="emailService"/>
+	</bean>
+
+</beans>

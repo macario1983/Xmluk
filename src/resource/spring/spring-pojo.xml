@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="persistent" class="com.nfehost.model.Persistent" abstract="true" scope="prototype"/>
+	<bean id="arquivoPojo" class="com.nfehost.model.Arquivo" parent="persistent" />
+	<bean id="contatoPojo" class="com.nfehost.model.Contato" parent="persistent" />
+	<bean id="dadosEmpresaPojo" class="com.nfehost.model.DadosEmpresa" parent="persistent" />
+	<bean id="destinatarioPojo" class="com.nfehost.model.Destinatario" parent="persistent" />
+	<bean id="emitentePojo" class="com.nfehost.model.Emitente" parent="persistent" />
+	<bean id="enderecoPojo" class="com.nfehost.model.Endereco" parent="persistent" />
+	<bean id="notaFiscalPojo" class="com.nfehost.model.NotaFiscal" parent="persistent" />
+	<bean id="usuarioPojo" class="com.nfehost.model.Usuario" parent="persistent" />
+
+</beans>

@@ -1,0 +1,2581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="danfe-paisagem" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="786" leftMargin="28" rightMargin="28" topMargin="22" bottomMargin="36" uuid="7d6f6e55-8e2e-431d-8975-024fbd672859">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="1305"/>
+	<property name="ireport.y" value="166"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="dataEmissao" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="numeroNf" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="chaveNfe" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataEntrada" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="razaoEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="enderecoEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="bairroEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="municipioEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ufEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="foneEmitente" class="java.lang.Long" isForPrompting="false"/>
+	<parameter name="cepEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="inscestEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="inscestEmitenteSt" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="cnpjEmitente" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="razaoDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="cnpjDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="enderecoDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="bairroDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="cepDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="municipioDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="foneDest" class="java.lang.Long" isForPrompting="false"/>
+	<parameter name="ufDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="inscestDest" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="baseCalculo" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorICMS" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="baseCalculoST" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorICMSST" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorProd" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorFrete" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorSeguro" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorDesconto" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorOutro" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorIPI" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="valorNota" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="razaoTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="freteTransp" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="codANTTTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="placaTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ufVeiculoTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="cnpjTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="enderecoTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="municipioTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ufTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="inscestTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="quantTransp" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="especieTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="marcaTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="numeracaoTransp" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pesoBrutoTransp" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="pesoLiquidoTransp" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="inscmunISSQN" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="valorServISSQN" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="baseCalculoISSQN" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="valorISSQN" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="infoContrib" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="infoFisco" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="serieNf" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="tpNf" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="natopNf" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="diretorioDanfe" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="dataEntrata" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="dataSaida" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="numDuplicata001" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="venctDuplicata001" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="vlrDuplicata001" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="numDuplicata002" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="venctDuplicata002" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="vlrDuplicata002" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="numDuplicata003" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="venctDuplicata003" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="vlrDuplicata003" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="numDuplicata004" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="venctDuplicata004" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="vlrDuplicata004" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="numDuplicata005" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="venctDuplicata005" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="vlrDuplicata005" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="numDuplicata006" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="venctDuplicata006" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="vlrDuplicata006" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="quantTransp002" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="especieTransp002" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="marcaTransp002" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="numeracaoTransp002" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pesoBrutoTransp002" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="pesoLiquidoTransp002" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="quantTransp003" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="especieTransp003" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="marcaTransp003" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="numeracaoTransp003" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pesoBrutoTransp003" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="pesoLiquidoTransp003" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="quantTransp004" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="especieTransp004" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="marcaTransp004" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="numeracaoTransp004" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pesoBrutoTransp004" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="pesoLiquidoTransp004" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="codigoBarra" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="protocoloDataRecibo" class="java.lang.String" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="BCIcms" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[BCIcms]]></fieldDescription>
+	</field>
+	<field name="CFOP" class="java.lang.Integer">
+		<fieldDescription><![CDATA[CFOP]]></fieldDescription>
+	</field>
+	<field name="CST" class="java.lang.Integer">
+		<fieldDescription><![CDATA[CST]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[codigo]]></fieldDescription>
+	</field>
+	<field name="ncm" class="java.lang.Integer">
+		<fieldDescription><![CDATA[ncm]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[nome]]></fieldDescription>
+	</field>
+	<field name="porcentagemIcms" class="java.lang.Double">
+		<fieldDescription><![CDATA[porcentagemIcms]]></fieldDescription>
+	</field>
+	<field name="porcentagemIpi" class="java.lang.Double">
+		<fieldDescription><![CDATA[porcentagemIpi]]></fieldDescription>
+	</field>
+	<field name="quantidade" class="java.lang.Double">
+		<fieldDescription><![CDATA[quantidade]]></fieldDescription>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<fieldDescription><![CDATA[unidade]]></fieldDescription>
+	</field>
+	<field name="valorDesconto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorDesconto]]></fieldDescription>
+	</field>
+	<field name="valorIcms" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorIcms]]></fieldDescription>
+	</field>
+	<field name="valorIpi" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorIpi]]></fieldDescription>
+	</field>
+	<field name="valorTotal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorTotal]]></fieldDescription>
+	</field>
+	<field name="valorUnitario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorUnitario]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="344" splitType="Stretch">
+			<rectangle radius="3">
+				<reportElement key="rectangle-128" x="1" y="268" width="23" height="76" isRemoveLineWhenBlank="true" uuid="b389b444-d79f-46fa-9656-ed0332a971c5">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-129" x="1" y="233" width="23" height="35" isRemoveLineWhenBlank="true" uuid="b2e79178-d44d-4327-9cb7-a1f6ae32b32d">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-130" x="1" y="199" width="23" height="34" isRemoveLineWhenBlank="true" uuid="85bc20be-65a0-4360-bfab-a90ac9660067">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-131" x="1" y="148" width="23" height="51" isRemoveLineWhenBlank="true" uuid="4cac143d-59d5-45b3-849e-44ae626dcb53">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-132" x="1" y="131" width="180" height="17" isRemoveLineWhenBlank="true" uuid="42e4009b-4dba-4053-87d9-beb165712e61">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-133" x="181" y="131" width="222" height="17" isRemoveLineWhenBlank="true" uuid="298346c5-0003-4940-b0eb-b57944d2df11">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-134" x="403" y="131" width="162" height="17" isRemoveLineWhenBlank="true" uuid="d9dc251f-1df7-41f4-bb21-d92edfc15f6e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-149" x="4" y="129" width="85" height="9" isRemoveLineWhenBlank="true" uuid="aa3f4080-2d71-4d88-9687-d13a2aabfdd9">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Inscricao Estadual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-150" x="184" y="129" width="95" height="9" isRemoveLineWhenBlank="true" uuid="2074ac9e-5a58-4278-8d23-1447cbddd248">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Insc Estadual do Sust. Tribut.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-151" x="406" y="129" width="80" height="9" isRemoveLineWhenBlank="true" uuid="865a9737-2652-4032-b4a1-2ccea1792f6b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Cnpj:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-152" x="5" y="147" width="22" height="51" isRemoveLineWhenBlank="true" uuid="3a0a42f0-c3ae-4fa1-816e-a48cec02e588">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Destinatário Remetente]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-135" x="24" y="148" width="379" height="17" isRemoveLineWhenBlank="true" uuid="b90548a3-23d0-4cc2-9f1a-c33579a2615d">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-136" x="403" y="148" width="162" height="17" isRemoveLineWhenBlank="true" uuid="7533e22f-739d-417c-bd88-c61b46e0a98f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-137" x="661" y="148" width="105" height="17" isRemoveLineWhenBlank="true" uuid="89a43cf7-b314-4d7d-9e30-fb62abedcb5f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-138" x="661" y="165" width="105" height="17" isRemoveLineWhenBlank="true" uuid="7a075f78-609c-48dc-a565-fa38b103a474">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-139" x="661" y="182" width="105" height="17" isRemoveLineWhenBlank="true" uuid="fb30c099-4bad-4a39-953d-1277708423ed">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-140" x="24" y="165" width="275" height="17" isRemoveLineWhenBlank="true" uuid="29d9a24d-85ae-4b20-8534-2f98a448e9cc">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-141" x="299" y="165" width="162" height="17" isRemoveLineWhenBlank="true" uuid="c3598c59-9623-4871-b918-66925bfa2f09">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-142" x="461" y="165" width="104" height="17" isRemoveLineWhenBlank="true" uuid="6ec97427-b1b9-498d-b5e5-5a7fff741749">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-143" x="24" y="182" width="247" height="17" isRemoveLineWhenBlank="true" uuid="334827e7-fb66-4f39-89ae-89584d38bf90">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-144" x="271" y="182" width="113" height="17" isRemoveLineWhenBlank="true" uuid="31723404-2951-4ed0-b339-86ac76b789f7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-145" x="384" y="182" width="47" height="17" isRemoveLineWhenBlank="true" uuid="c973de74-ef6a-4bd9-b36f-3b0652e53523">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-146" x="431" y="182" width="134" height="17" isRemoveLineWhenBlank="true" uuid="c20287cd-e34e-4980-b14b-b767156c7e66">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-153" x="26" y="146" width="85" height="9" isRemoveLineWhenBlank="true" uuid="afda1628-d1f7-4c97-8c76-ee3c72baa217">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Nome/Razao Social:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-154" x="406" y="146" width="47" height="9" isRemoveLineWhenBlank="true" uuid="148d8de1-0038-413f-90e5-45fdbeae47a4">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Cnpj/Cpf:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-155" x="26" y="163" width="85" height="9" isRemoveLineWhenBlank="true" uuid="2e458ee3-e2f6-4e97-8555-eeecffa94fdf">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Endereco:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-156" x="26" y="180" width="85" height="9" isRemoveLineWhenBlank="true" uuid="6d440129-a33a-4e5f-96cf-f3fa69a05629">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Município:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-157" x="274" y="180" width="85" height="9" isRemoveLineWhenBlank="true" uuid="eb2934f0-7eb2-4fa9-ac30-a22d2933e76f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Fone/Fax:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-158" x="387" y="180" width="24" height="9" isRemoveLineWhenBlank="true" uuid="4d9691b2-e5f5-4f3b-8806-1ff1fee71533">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Uf:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-159" x="302" y="163" width="69" height="9" isRemoveLineWhenBlank="true" uuid="90684835-c299-43fe-bfa7-5e71472e09d2">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Bairro/Distrito:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-160" x="464" y="162" width="43" height="9" isRemoveLineWhenBlank="true" uuid="cd99927b-1b89-4c40-b0db-955ebfbf1c8e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Cep:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-161" x="434" y="180" width="82" height="9" isRemoveLineWhenBlank="true" uuid="dc53f624-891b-4859-a2e7-dc2057fc1794">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Inscricao Estadual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-162" x="664" y="146" width="82" height="9" isRemoveLineWhenBlank="true" uuid="de0c291c-e5b8-424b-badf-bed696ff5abb">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Data da Emissao:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-163" x="663" y="163" width="82" height="9" isRemoveLineWhenBlank="true" uuid="71d8b3e2-8220-4746-b4f2-09dd2cfcb7d0">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Data da Entrata:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-164" x="663" y="180" width="82" height="9" isRemoveLineWhenBlank="true" uuid="4f06161b-aae3-4ccf-bb44-9f7d6cd261fb">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Data da Saída:]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-147" x="24" y="199" width="742" height="35" isRemoveLineWhenBlank="true" uuid="1febe6b1-b5b0-4252-b2b8-5e521e562333">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-165" x="6" y="201" width="20" height="29" isRemoveLineWhenBlank="true" uuid="1f88c66c-d12b-4360-af8e-0abf02f575f0">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Fatura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-166" x="5" y="230" width="24" height="40" isRemoveLineWhenBlank="true" uuid="df839018-f1cb-4a55-b1a6-a6a48a3febed">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Calculo Imposto]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-148" x="24" y="234" width="140" height="17" isRemoveLineWhenBlank="true" uuid="e5ea96f9-57e3-40f0-a95f-84610ebfdb29">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-149" x="164" y="234" width="135" height="17" isRemoveLineWhenBlank="true" uuid="f9e10a85-0877-4e5e-b557-4e928406a203">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-150" x="299" y="234" width="146" height="17" isRemoveLineWhenBlank="true" uuid="b1285b6d-8f20-41ab-8227-9a776c545954">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-151" x="605" y="234" width="161" height="17" isRemoveLineWhenBlank="true" uuid="dde13526-599e-4a05-a97c-d15d6caaca28">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-152" x="445" y="234" width="160" height="17" isRemoveLineWhenBlank="true" uuid="ee2b7c2f-bcd6-41f7-901d-78eb45410da8">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-153" x="605" y="251" width="161" height="17" isRemoveLineWhenBlank="true" uuid="4771f9ec-5932-4e03-b865-e93bde206f54">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-154" x="445" y="251" width="160" height="17" isRemoveLineWhenBlank="true" uuid="87abb441-0280-4c50-bece-790cbed942a7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-155" x="319" y="251" width="126" height="17" isRemoveLineWhenBlank="true" uuid="a90e31df-0ab6-41d7-8865-6445df7cc097">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-156" x="217" y="251" width="102" height="17" isRemoveLineWhenBlank="true" uuid="ddc15c4d-25b2-4445-983a-1902691a5c90">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-157" x="104" y="251" width="113" height="17" isRemoveLineWhenBlank="true" uuid="9df976e3-4640-4dd9-b950-c4c3075189ab">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-158" x="24" y="251" width="80" height="17" isRemoveLineWhenBlank="true" uuid="e8977ae5-86ee-428a-845e-4764742e77dd">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-167" x="3" y="265" width="20" height="79" isRemoveLineWhenBlank="true" uuid="1df18b39-7347-4cb2-8e1d-9d4339060940">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Transportador Vol. Transportados]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-159" x="24" y="268" width="354" height="17" isRemoveLineWhenBlank="true" uuid="f92181a6-b993-40b2-ac02-35de699c8e82">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-160" x="24" y="285" width="333" height="17" isRemoveLineWhenBlank="true" uuid="8a008135-b1e2-4880-8b90-596f9102d42b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-161" x="24" y="302" width="152" height="42" isRemoveLineWhenBlank="true" uuid="b4d3aec0-59ec-4441-98c4-ed97c64539ec">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-162" x="176" y="302" width="125" height="42" isRemoveLineWhenBlank="true" uuid="a3656a95-0770-4d10-aa14-cb5c5fc8d528">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-163" x="301" y="302" width="133" height="42" isRemoveLineWhenBlank="true" uuid="fdd45168-0c58-436e-b976-3305055bb95e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-164" x="378" y="268" width="55" height="17" isRemoveLineWhenBlank="true" uuid="ea0a47f2-5c83-4431-ad42-9c713d8058b1">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-165" x="433" y="268" width="91" height="17" isRemoveLineWhenBlank="true" uuid="af7d8f93-6cd9-45a0-8cda-e7ed07175c12">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-166" x="632" y="268" width="134" height="17" isRemoveLineWhenBlank="true" uuid="95183e3a-4913-4cca-86ac-91da139329d3">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-167" x="524" y="268" width="76" height="17" isRemoveLineWhenBlank="true" uuid="c44bbc52-dab8-4e1e-9a4c-3d6bba70eefb">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-168" x="600" y="268" width="32" height="17" isRemoveLineWhenBlank="true" uuid="1eea8ed5-17ba-4b9e-8e10-4a08bb3c426a">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-169" x="357" y="285" width="204" height="17" isRemoveLineWhenBlank="true" uuid="bcb93016-0f12-495e-b949-a9fa901e3e0c">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-170" x="593" y="285" width="173" height="17" isRemoveLineWhenBlank="true" uuid="92a71a11-6f3f-4a74-83ae-5db86136ce6e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-171" x="561" y="285" width="32" height="17" isRemoveLineWhenBlank="true" uuid="f88e32a1-c703-4d36-a790-cd5a86364a0a">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-172" x="434" y="302" width="90" height="42" isRemoveLineWhenBlank="true" uuid="cb3e74af-31e0-43e5-85ee-167dab54e554">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-173" x="524" y="302" width="120" height="42" isRemoveLineWhenBlank="true" uuid="2e13849a-06cf-44b3-8161-3d2892e810bc">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-174" x="644" y="302" width="122" height="42" isRemoveLineWhenBlank="true" uuid="16745a8e-454c-49b1-8705-9edca13d1ad6">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-168" x="26" y="232" width="85" height="9" isRemoveLineWhenBlank="true" uuid="3859cba8-6b9f-4fe2-860c-fc2f90d908ff">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Base de Cálculo do ICMS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-169" x="167" y="232" width="85" height="9" isRemoveLineWhenBlank="true" uuid="5a4133f5-d98b-4f3b-ba0b-db8c98e8ec71">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor do ICMS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-170" x="302" y="232" width="100" height="9" isRemoveLineWhenBlank="true" uuid="b2124b12-527f-4f20-abab-914677a371b9">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Base de Cálculo ICMS Substituição:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-171" x="448" y="232" width="86" height="9" isRemoveLineWhenBlank="true" uuid="7b622d73-5b6b-4be1-ac69-12a9eabf86bf">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor do ICMS Substituição:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-172" x="608" y="232" width="86" height="9" isRemoveLineWhenBlank="true" uuid="63b57745-0e22-4595-be8a-6abe3639b15a">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor Total dos Produtos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-173" x="26" y="249" width="63" height="9" isRemoveLineWhenBlank="true" uuid="150bdd25-6eae-4c1c-bb3b-391442556199">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor do Frete:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-174" x="107" y="249" width="63" height="9" isRemoveLineWhenBlank="true" uuid="34ff830c-bc42-49b0-86fb-629066360a03">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor do Seguro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-175" x="220" y="249" width="49" height="9" isRemoveLineWhenBlank="true" uuid="7eedb6c5-2fc9-48e8-bc26-d0c9dd872822">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Desconto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-176" x="321" y="248" width="75" height="9" isRemoveLineWhenBlank="true" uuid="dba8dc54-b209-498a-8805-83f75dda8481">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Outras Desp. Acessorias:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-177" x="448" y="249" width="41" height="9" isRemoveLineWhenBlank="true" uuid="ca94462c-0edd-4eef-b975-5730a1e3a30e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor do IPI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-178" x="608" y="249" width="67" height="9" isRemoveLineWhenBlank="true" uuid="cbf936f3-839c-421b-ae22-80d4f8111807">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor Total da Nota:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-179" x="26" y="266" width="63" height="9" isRemoveLineWhenBlank="true" uuid="18e0afd1-c222-43cf-b024-b55b42edea81">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Razão Social:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-180" x="381" y="266" width="47" height="9" isRemoveLineWhenBlank="true" uuid="13983dd7-e1dc-42e6-a02a-bc597f7172b6">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Frete por conta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-181" x="381" y="277" width="37" height="7" isRemoveLineWhenBlank="true" uuid="aee6a842-ac88-48c1-a142-749b6bda04d1">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[2 - Destinatário;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-182" x="381" y="273" width="37" height="7" isRemoveLineWhenBlank="true" uuid="d3031088-9e58-44be-8d87-432848a5727c">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[1 - Emitente;]]></text>
+			</staticText>
+			<rectangle radius="2">
+				<reportElement key="rectangle-175" x="420" y="274" width="9" height="9" isRemoveLineWhenBlank="true" uuid="7878d542-111d-42dd-978b-68f395abf160">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-183" x="436" y="266" width="47" height="9" isRemoveLineWhenBlank="true" uuid="adb6b8f6-5cfe-4a7d-bce1-7cf687f21ed6">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Código ANTT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-184" x="527" y="266" width="56" height="9" isRemoveLineWhenBlank="true" uuid="84573069-f311-4176-bc9c-f1ad4a96290e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Placa do Véiculo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-185" x="603" y="266" width="19" height="9" isRemoveLineWhenBlank="true" uuid="c1c9a0a7-36bf-4004-b691-0a1a92553ad6">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[UF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-186" x="635" y="266" width="43" height="9" isRemoveLineWhenBlank="true" uuid="313a524f-3ceb-4342-a6bd-28f51b793250">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[CNPJ/CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-187" x="26" y="283" width="63" height="9" isRemoveLineWhenBlank="true" uuid="c5fc5459-b0f2-4232-9d91-f59e5c8d3518">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-188" x="26" y="300" width="63" height="9" isRemoveLineWhenBlank="true" uuid="983000d6-4f09-4784-8406-21c6a538db62">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Quantidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-189" x="179" y="300" width="35" height="9" isRemoveLineWhenBlank="true" uuid="eedce80d-c40a-4936-8e80-3cf496dd7564">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Espécie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-190" x="304" y="300" width="35" height="9" isRemoveLineWhenBlank="true" uuid="93e2daf9-c488-4786-af2e-2a2b616ba1d0">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Marca:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-191" x="360" y="283" width="47" height="9" isRemoveLineWhenBlank="true" uuid="07021f0e-80f7-432c-b10a-6a7bc0773bba">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Município:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-192" x="564" y="283" width="20" height="9" isRemoveLineWhenBlank="true" uuid="6664010c-d44d-4239-95e8-c5cd2ec87782">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[UF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-193" x="437" y="300" width="47" height="9" isRemoveLineWhenBlank="true" uuid="8428ae7d-a92b-4a67-83cf-833f345a3f65">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Numeração:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-194" x="527" y="300" width="47" height="9" isRemoveLineWhenBlank="true" uuid="8ca22037-3762-4355-9cb5-1ba02c590191">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Peso Bruto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-195" x="647" y="300" width="47" height="9" isRemoveLineWhenBlank="true" uuid="0f230c0e-fe5b-4df0-a1d1-88c75ed55c4c">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Peso Líquido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-196" x="596" y="283" width="110" height="9" isRemoveLineWhenBlank="true" uuid="8a152c95-fd9f-4bb1-b2bb-450da9c8f7db">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Inscrição Estadual:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-130" x="664" y="155" width="99" height="10" isRemoveLineWhenBlank="true" uuid="6a79a9ea-85da-4d7e-a002-d2817e6b5ce8">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataEmissao}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-131" x="4" y="138" width="171" height="10" isRemoveLineWhenBlank="true" uuid="357db48a-2267-48b4-9bb5-5c70f5bfe7e5">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inscestEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-132" x="184" y="138" width="210" height="10" isRemoveLineWhenBlank="true" uuid="05d4904a-b10e-4bcc-b91a-704ca2c0ee72">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inscestEmitenteSt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-133" x="406" y="138" width="145" height="10" isRemoveLineWhenBlank="true" uuid="6c6b0760-58b0-4421-9c97-8492db61a588">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cnpjEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-134" x="26" y="155" width="369" height="10" isRemoveLineWhenBlank="true" uuid="e138932b-37c6-4b19-88a7-ca71d8997ca9">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{razaoDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-135" x="406" y="155" width="145" height="10" isRemoveLineWhenBlank="true" uuid="dd4175ff-0ae6-4181-a1d0-b4fa4d0a99b9">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cnpjDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-136" x="26" y="172" width="260" height="10" isRemoveLineWhenBlank="true" uuid="4f6a9a72-6f32-4009-a47f-421c6bebb272">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{enderecoDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-137" x="302" y="171" width="151" height="10" isRemoveLineWhenBlank="true" uuid="99409101-a6f2-41b1-b6cd-6ee33a8ed0a3">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bairroDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-138" x="464" y="172" width="86" height="10" isRemoveLineWhenBlank="true" uuid="ee2a4472-82ef-4bb2-97a1-0dbeba051fd0">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cepDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-139" x="274" y="189" width="105" height="10" isRemoveLineWhenBlank="true" uuid="8a5fc96d-c266-41a8-ae21-c0c0dda2a1e3">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{foneDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-140" x="387" y="189" width="37" height="10" isRemoveLineWhenBlank="true" uuid="bc29a8ad-2960-4eff-a4be-4c06b785074b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ufDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-141" x="434" y="189" width="127" height="10" isRemoveLineWhenBlank="true" uuid="f21615e4-f4ba-4f43-8b5c-2d111c4adf9f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inscestDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-142" x="26" y="189" width="234" height="10" isRemoveLineWhenBlank="true" uuid="82e9906c-29fe-4987-ae6d-5386514f529f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{municipioDest}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-143" x="34" y="240" width="126" height="10" isRemoveLineWhenBlank="true" uuid="aaeca582-4b48-4b5c-9cb4-11133164254b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{baseCalculo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-144" x="179" y="240" width="116" height="10" isRemoveLineWhenBlank="true" uuid="8676f3ef-6878-4e94-a082-1c83878fa82c">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorICMS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-145" x="319" y="241" width="123" height="10" isRemoveLineWhenBlank="true" uuid="2313cf26-2012-470f-9b6e-74e2172e211e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{baseCalculoST}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-146" x="459" y="241" width="143" height="10" isRemoveLineWhenBlank="true" uuid="37287908-3874-4411-99a8-b27c78ed49e7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorICMSST}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-147" x="614" y="241" width="148" height="10" isRemoveLineWhenBlank="true" uuid="679fd2c4-c580-4706-8c2b-fd6cbe5b322b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorProd}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-148" x="29" y="258" width="71" height="10" isRemoveLineWhenBlank="true" uuid="8bc64bd9-821f-4bab-9447-175d1490485f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorFrete}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-149" x="106" y="258" width="107" height="10" isRemoveLineWhenBlank="true" uuid="d20148fe-e9cf-48c9-b184-271ad5c21869">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorSeguro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-150" x="226" y="258" width="89" height="10" isRemoveLineWhenBlank="true" uuid="4baeecec-15c7-47b5-88fa-98e647d8010e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorDesconto}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-151" x="331" y="258" width="109" height="10" isRemoveLineWhenBlank="true" uuid="2725ca4e-31de-448d-a80d-59cad391f081">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorOutro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-152" x="453" y="258" width="148" height="10" isRemoveLineWhenBlank="true" uuid="9ee54b0b-59ce-43db-bd0b-463f7c182d57">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorIPI}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-153" x="613" y="258" width="149" height="10" isRemoveLineWhenBlank="true" uuid="617336c7-b827-459f-a2d4-0a23d295e314">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorNota}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-154" x="26" y="275" width="344" height="10" isRemoveLineWhenBlank="true" uuid="2d14ad4b-8c57-47ea-82bc-7c56057e4311">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{razaoTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-155" x="423" y="276" width="8" height="8" isRemoveLineWhenBlank="true" uuid="00d8cd6a-7293-4745-b78c-1a62be99d543">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{freteTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-156" x="436" y="275" width="54" height="10" isRemoveLineWhenBlank="true" uuid="0a6549ee-1221-4bbe-9ec1-38cdfa75d4d7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codANTTTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-157" x="527" y="275" width="56" height="10" isRemoveLineWhenBlank="true" uuid="f528db1d-0abb-4941-8439-84854c665524">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{placaTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-158" x="603" y="275" width="26" height="10" isRemoveLineWhenBlank="true" uuid="c0199add-91a9-4596-817a-6b6fa83ca966">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ufVeiculoTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-159" x="635" y="275" width="119" height="10" isRemoveLineWhenBlank="true" uuid="c2b38c3d-8598-4ba8-9b18-7bc9d20e519b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cnpjTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-160" x="26" y="292" width="315" height="10" isRemoveLineWhenBlank="true" uuid="50a0434e-c592-40d1-8596-56a773fa93fc">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{enderecoTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-161" x="360" y="292" width="192" height="10" isRemoveLineWhenBlank="true" uuid="a824c1b4-bbd7-4773-906e-76f7c0e83eaf">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{municipioTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-162" x="564" y="292" width="21" height="10" isRemoveLineWhenBlank="true" uuid="f74ddd7b-37b5-4a9b-88aa-9d4e43dccaaa">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ufTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-163" x="596" y="292" width="114" height="10" isRemoveLineWhenBlank="true" uuid="389ee708-fef6-4741-af61-17f3550307c9">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inscestTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-164" x="30" y="308" width="140" height="11" isRemoveLineWhenBlank="true" uuid="7ca9e5a7-41d0-4b81-ad50-1c3dff38bbd4">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{quantTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-165" x="180" y="308" width="110" height="11" isRemoveLineWhenBlank="true" uuid="c9aa8f78-0e22-45af-a2f3-ad07be425308">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{especieTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-166" x="304" y="308" width="120" height="11" isRemoveLineWhenBlank="true" uuid="23c59c5a-6e99-4f29-a5c7-4b9ee3a05f36">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{marcaTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-167" x="437" y="308" width="80" height="11" isRemoveLineWhenBlank="true" uuid="6492c6f5-764f-4412-97b0-2271258eb9a4">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeracaoTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-168" x="536" y="308" width="105" height="11" isRemoveLineWhenBlank="true" uuid="9e12076e-1e74-43cc-a170-bf8ff90b3f9e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoBrutoTransp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-169" x="653" y="308" width="110" height="11" isRemoveLineWhenBlank="true" uuid="f7012dde-65ee-4819-855d-701863cdd478">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoLiquidoTransp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-170" x="665" y="171" width="98" height="10" isRemoveLineWhenBlank="true" uuid="3037e23d-006d-407a-92b6-66990d79df47">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataEntrata}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-171" x="665" y="189" width="98" height="10" isRemoveLineWhenBlank="true" uuid="528e7e5a-6aa9-4332-ae4c-780fa556109e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataSaida}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-172" x="27" y="208" width="120" height="11" isRemoveLineWhenBlank="true" uuid="66075331-104f-4018-b916-5600390224b6">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numDuplicata001}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-173" x="149" y="208" width="110" height="11" isRemoveLineWhenBlank="true" uuid="b8dada6f-fe53-47e1-848b-1f1ec93acf0c">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{venctDuplicata001}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-174" x="262" y="208" width="135" height="11" isRemoveLineWhenBlank="true" uuid="7c69136b-e20b-4ed2-851a-fd7ba040171e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vlrDuplicata001}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-2" x="24" y="207" width="742" height="1" isRemoveLineWhenBlank="true" uuid="47a32885-638c-4ad3-9d1d-346991c3fe99">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-3" x="399" y="199" width="1" height="35" isRemoveLineWhenBlank="true" uuid="9b295e08-7668-4430-911d-d2468ce772f2">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-4" x="148" y="199" width="1" height="35" isRemoveLineWhenBlank="true" uuid="b7e38ba8-12ca-4379-99e0-5a5c2a8f7677">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-5" x="261" y="199" width="1" height="35" isRemoveLineWhenBlank="true" uuid="d22c0e45-1f88-4b54-bfdb-5d8f2c96a194">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-6" x="521" y="199" width="1" height="35" isRemoveLineWhenBlank="true" uuid="51ec13f0-3a24-4d45-ade1-704c22b24f05">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-7" x="627" y="199" width="1" height="35" isRemoveLineWhenBlank="true" uuid="220cfd77-4d8c-443e-8bd2-bd6bdab41f5f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="staticText-197" x="27" y="200" width="120" height="8" isRemoveLineWhenBlank="true" uuid="72d225a8-8ae6-4d45-b689-cbfb77ef8ef0">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Fatura No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-198" x="149" y="200" width="110" height="8" isRemoveLineWhenBlank="true" uuid="b6466b9d-0943-4099-9201-369427848e55">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-199" x="262" y="200" width="135" height="8" isRemoveLineWhenBlank="true" uuid="d3c28bcc-7cf8-4783-83de-1823d35263ba">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-200" x="400" y="200" width="120" height="8" isRemoveLineWhenBlank="true" uuid="38949ee4-6733-4cea-a2ac-1290175c60b1">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Fatura No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-201" x="521" y="200" width="105" height="8" isRemoveLineWhenBlank="true" uuid="23a1d1f9-d0cd-4b21-baaf-352e397f268b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-202" x="628" y="199" width="135" height="8" isRemoveLineWhenBlank="true" uuid="68944a1b-a402-4602-a454-9ec9b7f69922">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-175" x="27" y="216" width="120" height="11" isRemoveLineWhenBlank="true" uuid="3faec3e5-6484-4537-81ff-6b58c05683a7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numDuplicata002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-176" x="27" y="224" width="120" height="11" isRemoveLineWhenBlank="true" uuid="cbe19228-c347-4ad3-9dcb-463c33a77184">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numDuplicata003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-177" x="149" y="216" width="110" height="11" isRemoveLineWhenBlank="true" uuid="7bad3dc0-dda3-4095-ac87-1ca7c08d8dd8">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{venctDuplicata002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-178" x="149" y="224" width="110" height="11" isRemoveLineWhenBlank="true" uuid="242bc2ce-e440-48ce-8cd9-390eca7405e5">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{venctDuplicata003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-179" x="262" y="216" width="135" height="11" isRemoveLineWhenBlank="true" uuid="603a4f3b-4170-4ad1-bba0-81354749431e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vlrDuplicata002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-180" x="262" y="224" width="135" height="11" isRemoveLineWhenBlank="true" uuid="7a3cc597-e6b2-40f6-abc4-5b66fe527101">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vlrDuplicata003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-181" x="400" y="208" width="120" height="11" isRemoveLineWhenBlank="true" uuid="992e8502-b4dc-4487-b34f-e5ae84661e0b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numDuplicata004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-182" x="400" y="216" width="120" height="11" isRemoveLineWhenBlank="true" uuid="7f97632e-2009-4ba0-b044-316be26f6e5b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numDuplicata005}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-183" x="400" y="224" width="120" height="11" isRemoveLineWhenBlank="true" uuid="25033fa2-65c7-4fb3-855d-5ad693f06852">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numDuplicata006}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-184" x="521" y="208" width="105" height="11" isRemoveLineWhenBlank="true" uuid="51230941-3f30-4363-9069-b594978dfcb7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{venctDuplicata004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-185" x="521" y="216" width="105" height="11" isRemoveLineWhenBlank="true" uuid="873d1e55-3124-4312-9719-c652614b92a9">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{venctDuplicata005}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-186" x="524" y="224" width="102" height="11" isRemoveLineWhenBlank="true" uuid="ac5f7f88-8368-40bd-b2f0-c3458fb22b85">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{venctDuplicata006}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-187" x="628" y="208" width="135" height="11" isRemoveLineWhenBlank="true" uuid="476be9c1-df0d-4f39-9a1c-cc954fb53ad3">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vlrDuplicata004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-188" x="628" y="216" width="135" height="11" isRemoveLineWhenBlank="true" uuid="36ca02e6-25ee-4574-9db6-13ee01a3e6fe">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vlrDuplicata005}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-189" x="628" y="224" width="135" height="11" isRemoveLineWhenBlank="true" uuid="cd819a2e-a619-4183-b750-d435fca4003f">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vlrDuplicata006}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-190" x="30" y="316" width="140" height="11" isRemoveLineWhenBlank="true" uuid="3272524e-42c1-4518-a1a4-d5197b48b2d7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{quantTransp002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-191" x="30" y="324" width="140" height="11" isRemoveLineWhenBlank="true" uuid="893af0a6-7b41-4fa6-bb1e-c2ddeeac4357">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{quantTransp003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-192" x="180" y="316" width="110" height="11" isRemoveLineWhenBlank="true" uuid="9061018f-c1f1-44dc-aa08-96350c2e89d6">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{especieTransp002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-193" x="180" y="324" width="110" height="11" isRemoveLineWhenBlank="true" uuid="61f69a64-ef48-423c-a014-60e60c439751">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{especieTransp003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-194" x="304" y="316" width="120" height="11" isRemoveLineWhenBlank="true" uuid="39238957-fe70-4cb5-9acb-4be325290f0b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{marcaTransp002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-195" x="304" y="324" width="120" height="11" isRemoveLineWhenBlank="true" uuid="a90e9a02-af31-4989-8bc1-9ba2fa27a6fa">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{marcaTransp003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-196" x="437" y="316" width="80" height="11" isRemoveLineWhenBlank="true" uuid="614e19c2-29a3-4347-a194-5664589514de">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeracaoTransp002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-197" x="437" y="324" width="80" height="11" isRemoveLineWhenBlank="true" uuid="d773809e-aec2-465d-a634-3d8f17795455">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeracaoTransp003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-198" x="536" y="316" width="105" height="11" isRemoveLineWhenBlank="true" uuid="0ed0a2ef-2e20-4c2c-9bb8-04debde2f0d7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoBrutoTransp002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-199" x="536" y="324" width="105" height="11" isRemoveLineWhenBlank="true" uuid="60dd78fb-7c4a-4dcf-b03e-2d251755c818">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoBrutoTransp003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-200" x="653" y="316" width="110" height="11" isRemoveLineWhenBlank="true" uuid="ffe78b29-2394-4c6b-b535-d5ca7e935ff4">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoLiquidoTransp002}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-201" x="653" y="324" width="110" height="11" isRemoveLineWhenBlank="true" uuid="61a6cdfe-b608-4754-ba35-20016ed5ef8c">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoLiquidoTransp003}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-202" x="30" y="332" width="140" height="11" isRemoveLineWhenBlank="true" uuid="cce7dc1a-98fd-4bb1-a6ac-43bde6aa76f3">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{quantTransp004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-203" x="180" y="332" width="110" height="11" isRemoveLineWhenBlank="true" uuid="af7d7d9c-e4b1-4f8b-9535-824da9815a90">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{especieTransp004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-204" x="304" y="332" width="120" height="11" isRemoveLineWhenBlank="true" uuid="37050ab5-ea00-4248-a1d4-9e2f3a6627a7">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{marcaTransp004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-205" x="437" y="332" width="80" height="11" isRemoveLineWhenBlank="true" uuid="41aa6d03-ecb6-4c5d-a266-bdf816499d6a">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeracaoTransp004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-206" x="536" y="332" width="105" height="11" isRemoveLineWhenBlank="true" uuid="e40df6d6-bf44-45b3-a7dc-a3fa77ab60ad">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoBrutoTransp004}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-207" x="653" y="332" width="110" height="11" isRemoveLineWhenBlank="true" uuid="4642a5ba-6c1e-45f2-8aeb-0dc399177a85">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoLiquidoTransp004}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="3">
+				<reportElement key="rectangle-177" x="371" y="40" width="126" height="74" uuid="bead2d32-20c4-479b-9657-db093454d08b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-178" x="0" y="1" width="574" height="15" uuid="fc31232c-11b9-4bc6-b768-4c043d67555a">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-179" x="606" y="1" width="159" height="30" uuid="e4fb3592-e3d7-4379-9a7f-581b0b07dc32">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-180" x="0" y="16" width="126" height="15" uuid="032d7bca-e9b4-4ee6-a347-aae305fa1418">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-181" x="126" y="16" width="448" height="15" uuid="c11cb2ca-0e66-473f-a816-9bb4dd0b50e5">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-203" x="3" y="14" width="100" height="9" uuid="992e7067-db4e-4fa2-b601-a7ba28e22821">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Data do Recebimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-204" x="605" y="0" width="158" height="12" uuid="c18ed54b-07b1-4fea-add6-3f013130a893">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[NFe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-205" x="647" y="20" width="42" height="12" uuid="82288aac-5e3d-4947-a00f-53f3aa5fd433">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[SÉRIE ]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-8" x="0" y="35" width="766" height="1" uuid="b55fc742-93f0-4de2-800f-9da60c697134">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<rectangle radius="3">
+				<reportElement key="rectangle-182" x="497" y="40" width="268" height="43" uuid="73cf6ae8-381a-46a9-826d-35038914ba5d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-206" x="391" y="41" width="92" height="14" uuid="05bee3d1-c9a7-49af-981e-b80937900bf6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[DANFE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-207" x="391" y="52" width="92" height="21" uuid="1d1e1024-7cde-432e-a3c9-9bb418e45ddb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO AUXILIAR DA NOTA FISCAL ELETRÔNICA]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-183" x="1" y="114" width="496" height="17" uuid="bf595237-cbfb-4ad9-a180-40841a377410"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-184" x="497" y="83" width="268" height="18" uuid="9d799a05-cf41-4f06-ab55-b9cf1eef7f3b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-208" x="3" y="111" width="100" height="9" uuid="a7aa740c-b68b-4318-823d-9c25e8adce14"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Natureza da Operação:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-209" x="129" y="14" width="214" height="9" uuid="d37d72ea-edaf-4259-8f82-92f0ba6e738a">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Identificação e Assinatura do Recebedor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-210" x="88" y="43" width="200" height="11" uuid="6e3759f9-a0a2-4291-86b4-3e536784fa9f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Identificação do Emitente]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-208" x="611" y="9" width="152" height="12" uuid="0637a37a-02d2-4f38-b3a4-6a2d88fc088b">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["No. " + $P{numeroNf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-209" x="498" y="90" width="265" height="11" uuid="4cd391a9-7ea7-4912-9706-ef49bb7093e7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{chaveNfe}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-210" x="88" y="58" width="200" height="8" uuid="500c49c9-4e82-4dff-857b-0d171767ff99"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{razaoEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-211" x="88" y="66" width="200" height="8" uuid="ff693202-c10b-4ee6-8828-559036f05c2b"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{enderecoEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-212" x="88" y="74" width="200" height="8" uuid="17b90f7f-0327-4dd4-89da-183eaa6ad341"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bairroEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-213" x="88" y="82" width="183" height="8" uuid="d2a57b3e-6156-4e93-b8ed-6c8c66fa0f3e"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{municipioEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-214" x="271" y="82" width="17" height="8" uuid="cf4c7b5d-e4ca-4007-9c40-c8aec7a760fd"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ufEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-215" x="88" y="98" width="200" height="8" uuid="e560e9c1-09f9-4f38-bc17-6bab8df13b70"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{foneEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-216" x="88" y="90" width="200" height="8" uuid="655102b4-98fe-4954-bbaf-a76624b64f7e"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cepEmitente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-217" x="391" y="84" width="75" height="11" uuid="b61ea328-b662-49fd-bcb5-130a7fe3ef8d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["No. " + $P{numeroNf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-218" x="689" y="20" width="35" height="12" uuid="9fdc1369-13ef-4222-9ca9-84e0661c13d8">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{serieNf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-219" x="391" y="94" width="85" height="11" uuid="9e3819a2-de29-40cd-99d0-01a841f6514b"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SÉRIE " + $P{serieNf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-211" x="391" y="70" width="54" height="8" uuid="d7037312-f91a-470e-be1d-7b60f4ee94c0"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="5" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1 - SAÍDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-212" x="391" y="78" width="54" height="8" uuid="6b99d996-24f0-4def-8fe1-75c453de0a66"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="5" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2 - ENTRADA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle-185" x="461" y="70" width="15" height="15" uuid="68826dc9-736d-4aa6-9121-63ff6e323b5f"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-220" x="466" y="72" width="8" height="13" uuid="debc11c3-0695-4232-a0e9-2023587ba1c4"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tpNf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-221" x="3" y="120" width="276" height="10" uuid="2f747153-f8ad-4928-aa5b-dae17b2b1bb8"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{natopNf}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="textField-222" x="430" y="104" width="14" height="11" uuid="4807d600-c201-42ba-994a-57ecb36b4867"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-223" x="411" y="104" width="19" height="11" uuid="bde52f62-e539-47d7-84bb-d73ef83b873d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FL " + $V{PAGE_NUMBER} + "/"]]></textFieldExpression>
+			</textField>
+			<rectangle radius="3">
+				<reportElement key="rectangle-186" x="497" y="100" width="268" height="14" uuid="0cf9c53b-6eb1-4c57-88ce-bc6d022cd864"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-187" x="497" y="114" width="268" height="17" uuid="2219d96d-6a0f-4a33-a8d8-0c2e92cf4c4e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-213" x="500" y="113" width="100" height="7" uuid="4ba7787e-19a3-4793-9250-7f9d6be2637d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Protocolo de autorização de uso:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-214" x="499" y="81" width="100" height="9" uuid="b1b54cb8-bf2b-40aa-8a3a-cd7c8efe3cba"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Chave de Acesso:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-224" x="3" y="1" width="561" height="9" uuid="5dc35936-15ec-4960-9b78-dc40ff5f4036">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Recebemos de " + $P{razaoEmitente} + " os produtos/serviços constantes da Nota Fiscal Eletrônica indicada ao lado"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-225" x="516" y="121" width="238" height="10" isRemoveLineWhenBlank="true" uuid="d9467ab7-1fff-4796-9ed4-12af90b8da6e">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{protocoloDataRecibo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-215" x="501" y="100" width="261" height="14" uuid="b4e99b33-2550-4fc7-a3fe-f202e3e16320"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Consulta de autenticidade no portal nacional da NF-e www.nfe.fazenda.gov.br/portal ou no site da Sefaz Autorizadora]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="499" y="45" width="265" height="37" uuid="5741f670-a1f0-4a52-a4df-fa0eebb32de3"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$P{codigoBarra}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<image>
+				<reportElement x="15" y="43" width="60" height="60" uuid="d43423b0-0f78-4b1a-b99e-5cc967e4ad83"/>
+				<imageExpression><![CDATA[$P{diretorioDanfe}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<rectangle radius="3">
+				<reportElement key="rectangle-51" x="1" y="0" width="29" height="14" uuid="25f1150d-02db-4c3c-b8f8-9e456476b9bf"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-59" x="0" y="2" width="30" height="9" uuid="0af3ea6b-fa13-4880-85c2-ad3f495bc35e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Cod.Prod.]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-52" x="30" y="0" width="351" height="14" uuid="350cdb9f-be17-42f5-8786-c1dcb39c9f31"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-53" x="381" y="0" width="28" height="14" uuid="4d04f738-89af-4a5d-93a7-0c6110861399"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-60" x="30" y="2" width="346" height="9" uuid="71a95308-7207-422e-82cb-3e3c4889c7cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Descrição dos Produtos e Serviços]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-54" x="409" y="0" width="20" height="14" uuid="c2d15945-1a74-4894-92c6-3c56eaec7eee"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-55" x="429" y="0" width="25" height="14" uuid="c2f7867d-fcd3-4b6d-a2dc-d4bcebf2f9e8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-61" x="381" y="2" width="27" height="9" uuid="f8582b34-21e3-414e-b2f7-ff36bc9fc6af"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[NCM/SH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-62" x="409" y="2" width="20" height="9" uuid="27eced1b-e49e-487c-b2c7-1ee35a25ffa8"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[CST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-63" x="429" y="2" width="25" height="9" uuid="8776f4bf-7e26-4fe1-9cfe-6add6beb73eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[CFOP]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-56" x="454" y="0" width="20" height="14" uuid="281cf14c-977f-43c7-8ef2-1320b1b22b63"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-64" x="454" y="2" width="20" height="9" uuid="1e7691b1-9651-4b3d-a8d5-0db69cbb5327"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Unid.]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-57" x="474" y="0" width="35" height="14" uuid="bd79100c-3abc-4e39-80a1-91837847cef0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-65" x="474" y="2" width="35" height="9" uuid="0fdf67dd-de9f-44f4-8146-7ecb6d5f3665"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-58" x="509" y="0" width="35" height="14" uuid="993689eb-48e5-413e-bc46-712f3ccca62f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-59" x="579" y="0" width="35" height="14" uuid="a8b08bda-110f-4766-a98b-fe5a75b64984"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-60" x="614" y="0" width="33" height="14" uuid="4755e462-3482-4bf6-a482-639d96b10d74"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-61" x="647" y="0" width="35" height="14" uuid="cef2319b-a261-4d9c-983d-6983a88b9015"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-62" x="682" y="0" width="30" height="14" uuid="674a9f99-ba8d-43e1-9728-3a20c7083859"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-63" x="712" y="0" width="25" height="14" uuid="b3e1c521-5732-420a-a24e-f2c8ba3bf775"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-66" x="509" y="2" width="35" height="9" uuid="fef22295-1366-45c4-b765-8e656333a61e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vlr. Unit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-67" x="579" y="2" width="35" height="9" uuid="00d2526f-06a2-489e-8b83-ae5884ed6150"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vlr. Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-68" x="614" y="2" width="35" height="9" uuid="3d335ed8-f207-4716-ab7d-47dae60e44fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[BC. ICMS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-69" x="647" y="2" width="35" height="9" uuid="1e34655c-4df3-42d4-97ec-070ea8a5479a"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vlr. ICMS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-70" x="682" y="2" width="30" height="9" uuid="70d933af-fd8e-43fd-83dd-4fc2156405ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vlr. IPI]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-64" x="737" y="0" width="29" height="14" uuid="fd844d94-6654-442d-a319-4ca8ce446a6f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-71" x="712" y="2" width="25" height="9" uuid="966ee123-441d-4c64-8d74-298ebd58b5db"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[% ICMS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-72" x="737" y="2" width="25" height="9" uuid="76d7e7f3-5adf-4e1d-88b6-958aa8e703e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[% IPI]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-65" x="544" y="0" width="35" height="14" uuid="b08b1f66-2cf8-4d87-9f26-e762db0b9dfd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-79" x="544" y="2" width="35" height="9" uuid="19bc42a6-d0b1-47a2-87e3-8d7a338735de"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Vlr. Desc.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="8" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="0" y="0" width="29" height="8" uuid="33e8502c-c9db-42c4-9d92-909fcc88b220"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="textField" x="30" y="0" width="347" height="8" uuid="8127979b-5096-4564-bc9e-73d0d35aee6d"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="380" y="0" width="27" height="8" uuid="bcdebc9c-614b-4638-8b6c-a88e4568292b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ncm}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="408" y="0" width="20" height="8" uuid="b52ca19c-2e57-4179-a933-8d34218e5bce"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CST}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="428" y="0" width="25" height="8" uuid="3d5a55fd-e61d-44fb-be81-0f1b2577c8c1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CFOP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="453" y="0" width="20" height="8" uuid="27bf6207-faf8-43a9-9d49-b9af11ba8832"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="473" y="0" width="35" height="8" uuid="cd4740f4-a974-43a3-b851-dea10559ce37"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="508" y="0" width="35" height="8" uuid="66d9fa34-2687-4e5e-af5e-0644cdaa6381"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorUnitario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="543" y="0" width="35" height="8" uuid="cc5ef908-4aa8-4f99-8778-406397d8c4d7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorDesconto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="613" y="0" width="33" height="8" uuid="6553a0b6-5ea4-4cd9-ba19-fdf2c1f5d6b2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BCIcms}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="646" y="0" width="35" height="8" uuid="8556e18b-0396-4005-a258-1fdb745280b8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorIcms}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="681" y="0" width="30" height="8" uuid="08206f2c-6047-4976-a1f2-858f18d52e21"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorIpi}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="711" y="0" width="25" height="8" uuid="ed1a03d6-7def-4438-882d-f0c4892e4d7f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{porcentagemIcms}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField" x="736" y="0" width="25" height="8" uuid="2e235acd-72ef-4019-9887-794c5ebd258b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{porcentagemIpi}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement key="textField-34" x="578" y="0" width="35" height="8" uuid="a77756c5-9b90-41dd-b505-08ac87eaaf17"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="107" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.compareTo( new Integer(1) ) != 1)]]></printWhenExpression>
+			<rectangle radius="3">
+				<reportElement key="rectangle-126" x="0" y="1" width="23" height="20" uuid="3d86955b-43ad-45e8-9d80-08aa183c2bfe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-127" x="0" y="21" width="23" height="84" uuid="b5a178ae-178e-4880-8405-c4c8f8866f90"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-43" x="23" y="1" width="243" height="20" uuid="bd978758-9bfb-4087-ab60-5e4052e58a32"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-19" x="5" y="0" width="18" height="20" uuid="2b79dc9c-ae1d-498a-8ded-61c9ea24b758"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Cálculo ISSQN]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-44" x="266" y="1" width="155" height="20" uuid="5636fb9e-7281-48da-b1d3-ec100b3495da"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-45" x="421" y="1" width="181" height="20" uuid="dec488cc-f624-4c48-b36d-a6f5bc7240b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-46" x="602" y="1" width="164" height="20" uuid="c9a2ed83-017c-4908-a2a0-1e710f0d817d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="3">
+				<reportElement key="rectangle-47" x="23" y="21" width="390" height="84" uuid="81ecc980-b98b-449f-8ff1-20cd5d704a25"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-20" x="4" y="37" width="18" height="55" uuid="ccc64ab8-60f9-4433-a65a-67cdfd95c81f"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Dados Adicionais]]></text>
+			</staticText>
+			<rectangle radius="3">
+				<reportElement key="rectangle-48" x="413" y="21" width="353" height="84" uuid="bb924720-94ac-4e98-b5ed-0dbfb7ca4400"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-52" x="25" y="-1" width="63" height="9" uuid="16d55736-84d0-417a-a017-40e345b45df5"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Inscrição Municipal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-53" x="269" y="-1" width="110" height="9" uuid="43071322-8bcd-4d64-96b7-1345ac8a4189"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor Total dos Serviços:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-54" x="424" y="-1" width="85" height="9" uuid="071d54b9-6c47-4301-9b28-a787d11ca3d3"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Base de Cálculo do ISSQN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-55" x="606" y="-1" width="56" height="9" uuid="8b52b7cc-fe29-4141-af35-d212041c8c56"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Valor do ISSQN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-56" x="25" y="20" width="105" height="9" uuid="4fb73a97-d7c2-4eaf-bdaf-6629cacf11d9"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Informações Complementares:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="25" y="8" width="225" height="10" uuid="ab393710-c452-41bb-8f3f-a1a5c1e12ebc"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inscmunISSQN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="280" y="8" width="136" height="10" uuid="018283bb-4492-41fa-966f-62fd368c7e7a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorServISSQN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="424" y="8" width="174" height="10" uuid="b6544a17-6659-4ef7-bf19-d1ef57c1e4d7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{baseCalculoISSQN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="631" y="8" width="128" height="10" uuid="1583e2bb-fae5-4cae-9ffe-e5eb50a08a2c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{valorISSQN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="25" y="31" width="385" height="74" uuid="a896acad-6634-4930-8894-a9d3f5a63ef0"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{infoContrib}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="415" y="31" width="345" height="73" uuid="dc5291d6-71a3-4799-951f-93fbe340c89c"/>
+				<textElement>
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{infoFisco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

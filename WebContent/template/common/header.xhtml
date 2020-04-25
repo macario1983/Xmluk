@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:a4j="http://richfaces.org/a4j"
+			    xmlns:rich="http://richfaces.org/rich"
+			    xmlns:p="http://primefaces.org/ui"
+			    xmlns:sec="http://www.springframework.org/security/facelets/tags">
+<h:form>
+	
+	<p:menubar rendered="#{loginBean.logged}">
+		<p:submenu label="Cadastro">
+			<p:menuitem url="/cadastro/arquivo/list.xhtml" value="Arquivos de Nota Fiscal(s)"/>
+			<p:menuitem url="/cadastro/contato/list.xhtml" value="Contato(s)"/>
+			<p:menuitem url="/cadastro/emitente/list.xhtml" value="Emitente(s)"/>
+			<p:menuitem url="/cadastro/destinatario/list.xhtml" value="Destinatário(s)"/>
+			<p:menuitem url="/cadastro/usuario/list.xhtml" value="Usuário(s)"/>
+		</p:submenu>
+		
+		<p:submenu label="Processar">
+			<p:menuitem url="/upload/form.xhtml" value="Arquivo(s) Xml"/>
+		</p:submenu>
+	
+		<p:submenu label="E-mail">
+			<p:menuitem url="/email/list.xhtml" value="Enviar e-mail" rendered="#{loginBean.administrador}"/>
+			<p:menuitem url="/email/form.xhtml" value="Verificar e-mail"/>
+		</p:submenu>
+
+		<p:submenu label="Notas fiscais">
+			<p:menuitem url="/nota-fiscal/list.xhtml" value="Visualizar notas fiscais"/>
+		</p:submenu>
+	
+	
+	</p:menubar>
+
+</h:form>
+</ui:composition>

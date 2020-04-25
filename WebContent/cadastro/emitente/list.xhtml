@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<f:metadata>
+				<f:event listener="#{emitenteListBean.helper.fillDefaults()}" type="preRenderView" />
+			</f:metadata>
+			
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Filtro de Emitentes"/> </span>
+			</div>
+			<br />
+
+			<h:form id="list">
+
+				<p:messages id="messages"/>
+
+				<p:panelGrid styleClass="panelGridCenter noBorders">
+						
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Emitente"/>
+						</p:column>
+
+						<p:column>
+						<p:column>
+							<p:inputText maxlength="60" size="65" value="#{emitenteListBean.filter.razaoSocial}" />
+						</p:column>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="CNPJ"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="14" size="19" value="#{emitenteListBean.filter.cnpj}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Inscrição Estadual"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="14" size="19" value="#{emitenteListBean.filter.inscricaoEstadual}" />
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<div align="left">
+									<h:commandLink value="Salvar em pdf" disabled="#{empty emitenteListBean.lazyModel}">
+										<p:dataExporter type="pdf" target="tabela" fileName="emitente" encoding="CP1252"/> 
+									</h:commandLink>
+								</div>
+								<div align="right">
+									<p:commandButton value="Filtrar" actionListener="#{emitenteListBean.buscar}" update="tabela messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+				</p:panelGrid>
+
+				<br/>
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Emitentes Cadastrados"/> </span>
+				</div>
+
+				<br/><br/>
+
+				<p:dataTable
+					id="tabela"
+					var="emitente"
+					value="#{emitenteListBean.lazyModel}"
+					emptyMessage="Nenhum emitente encontrado"
+					sortBy="#{emitente.id}"
+					lazy="true"
+					rows="10"
+					resizableColumns="true"
+					rowKey="#{emitente.id}"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column styleClass="numero" width="7%">
+				    	<f:facet name="header">
+				    		<h:outputText value="Código"/>
+				    	</f:facet>
+						<h:outputText value="#{emitente.id}"/>
+					</p:column>
+
+					<p:column styleClass="letra">
+				    	<f:facet name="header">
+				    		<h:outputText value="Razão Social"/>
+				    	</f:facet>
+						<h:outputText value="#{emitente.dadosEmpresa.razaoSocial}"/>
+					</p:column>
+
+					<p:column styleClass="dados" width="10%">
+				    	<f:facet name="header">
+				    		<h:outputText value="CNPJ"/>
+				    	</f:facet>
+						<h:outputText value="#{emitente.dadosEmpresa.cnpj}"/>
+					</p:column>
+
+					<p:column styleClass="dados" width="15%">
+				    	<f:facet name="header">
+				    		<h:outputText value="Inscrição Estadual"/>
+				    	</f:facet>
+						<h:outputText value="#{emitente.dadosEmpresa.inscricaoEstadual}"/>
+					</p:column>
+
+					<p:column width="7%" exportable="false">
+						<f:facet name="header">
+							<h:outputText value="Ação"/>
+						</f:facet>
+						<center>
+							<p:commandButton process="@this" styleClass="botaoImagem" icon="botaoLog" title="Detalhes do Emitente" actionListener="#{emitenteListBean.findDadosEmitente(emitente.id)}" oncomplete="dlgDetalhes.show()" update=":dlg:detalhe"/>
+						</center>
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+				<br />
+
+			</h:form>
+			
+			<h:form id="dlg">
+				<p:dialog id="detalhe" widgetVar="dlgDetalhes" modal="true">
+					<p:tabView effect="slide" effectDuration="normal">
+						<p:tab title="Dados do emitente">
+							<p:panelGrid styleClass="panelGridCenter noBorders">
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Razão Social"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.razaoSocial}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CNPJ"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.cnpj}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Inscrição Estadual"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.inscricaoEstadual}"/>
+									</p:column>
+								</p:row>
+							
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Inscrição Municipal"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.inscricaoMunicipal}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Logradouro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.logradouro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Numero"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.numero}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Bairro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.bairro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Complemento"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.complemento}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Cidade"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.municipio}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Estado"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.uf.descricao}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CEP"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.cep}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Telefone"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{emitenteListBean.emitente.dadosEmpresa.endereco.telefone}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</p:dialog>
+			</h:form>
+			
+		</div>
+	</ui:define>
+</ui:composition>

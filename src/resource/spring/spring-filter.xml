@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="contatoFilter" class="com.nfehost.model.filter.ContatoFilter" scope="view" />
+	<bean id="emitenteFilter" class="com.nfehost.model.filter.EmitenteFilter" scope="view" />
+	<bean id="arquivoFilter" class="com.nfehost.model.filter.ArquivoFilter" scope="view" />
+	<bean id="destinatarioFilter" class="com.nfehost.model.filter.DestinatarioFilter" scope="view" />
+	<bean id="notaFiscalFilter" class="com.nfehost.model.filter.NotaFiscalFilter" scope="view"/>
+	<bean id="emailFilter" class="com.nfehost.model.filter.EmailFilter"/>
+	<bean id="usuarioFilter" class="com.nfehost.model.filter.UsuarioFilter" scope="view"/>
+
+</beans>

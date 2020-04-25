@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:ez="http://java.sun.com/jsf/composite"
+		xmlns:p="http://primefaces.org/ui">
+   
+   <h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>
+			Nfe-Host
+		</title>
+		<h:outputScript name="global.js" library="javascript"/>
+		<h:outputScript name="validacao.js" library="javascript"/>
+		<h:outputScript name="restricoes_de_campos.js" library="javascript"/>
+		<h:outputStylesheet name="global.css" library="css"/>
+		
+	    <ui:insert name="scriptexclusivo">
+			
+		</ui:insert>
+		
+		<style type="text/css">
+            .ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;
+            }
+
+            .ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+            }
+        </style>
+	</h:head>
+	
+   
+	<h:body>		
+		<p:layout fullPage="true">
+			<p:layoutUnit position="north" styleClass="ui-top myLayoutStyleClass ui-layout-bd" maxSize="126">
+			    <!-- CABEÇALHO - INÍCIO -->
+			    <ui:insert name="header">
+			      <ui:include src="header.xhtml"/>
+			    </ui:insert>
+			    <!-- CABEÇALHO - FIM -->
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="center" styleClass="ui-top myLayoutStyleClass ui-layout-bd">
+			    <!-- CORPO - INÍCIO -->
+			    <ui:insert name="content">
+			      <ui:include src="content.xhtml"/>
+			    </ui:insert>
+			    <!-- CORPO - FIM -->
+		    </p:layoutUnit>
+			    
+		    <p:layoutUnit header="Checklist" position="east" collapsible="true" styleClass="ui-top myLayoutStyleClass" minSize="350" maxSize="350">
+		    	<!-- CORPO - INÍCIO -->
+			    <ui:insert name="right_content">
+			      <ui:include src="content.xhtml"/>
+			    </ui:insert>
+			    <!-- CORPO - FIM -->
+		    </p:layoutUnit>
+			
+			<p:layoutUnit position="south" styleClass="ui-top myLayoutStyleClass ui-layout-bd" minSize="45">
+			    <!-- RODAPÉ - INÍCIO -->
+			    <ui:insert name="footer">
+			      <ui:include src="footer.xhtml"/>
+			    </ui:insert>
+			    <!-- RODAPÉ - FIM -->
+		    </p:layoutUnit>
+		</p:layout>
+	</h:body>
+</html>

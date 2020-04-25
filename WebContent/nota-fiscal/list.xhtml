@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<f:metadata>
+				<f:event listener="#{notaFiscalListBean.helper.fillDefaults()}" type="preRenderView" />
+			</f:metadata>
+			
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Filtro de Notas Fiscais"/> </span>
+			</div>
+			<br />
+
+			<h:form id="list">
+
+				<p:messages id="messages"/>
+
+				<p:panelGrid styleClass="panelGridCenter noBorders">
+					
+					<p:row>
+						<p:column>
+							<p:outputLabel value="Emitente"/>
+						</p:column>
+
+						<p:column>
+							<p:selectOneMenu value="#{notaFiscalListBean.filter.emitente}" label="Emitente" converter="emitenteConverter" filter="true" filterMatchMode="contains">
+								<f:selectItem itemLabel="" itemValue="#{null}" noSelectionOption="true"/>
+								<f:selectItems var="emitente" value="#{notaFiscalListBean.helper.listEmitentes}" itemLabel="#{emitente.dadosEmpresa.cnpj} - #{emitente.dadosEmpresa.razaoSocial}"/>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<p:outputLabel value="Numero da Nota Fiscal"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="10" size="15" value="#{notaFiscalListBean.filter.numeroNota}" onkeypress="mascara(this,soNumeros)"/>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Data de Emissão da Nota Fiscal"/>
+						</p:column>
+						
+						<p:column>
+							<p:panelGrid>
+								<p:row>
+									<p:column styleClass="noPadding">
+										<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" label="Data de Emissão da Nota Fiscal Inicial" value="#{notaFiscalListBean.filter.dataEmissaoNotaInicial}"/>
+									</p:column>
+			
+									<p:column>
+										<p:outputLabel value="à"/>
+									</p:column>
+
+									<p:column>
+										<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" label="Data de Emissão da Nota Fiscal Final" value="#{notaFiscalListBean.filter.dataEmissaoNotaFinal}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:column>
+					</p:row>
+					
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<div align="left">
+									<h:commandLink value="Salvar em pdf" disabled="#{empty notaFiscalListBean.listNotasFiscaisByEmitente}">
+										<p:dataExporter type="pdf" target="tabela" fileName="notaFiscal" encoding="CP1252"/> 
+									</h:commandLink>
+								</div>
+								<div align="right">
+									<p:commandButton value="Filtrar" actionListener="#{notaFiscalListBean.buscar}" update="tabela messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+				</p:panelGrid>
+
+
+				<br/>
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Notas Fiscais Cadastradas"/> </span>
+				</div>
+
+				<br/><br/>
+				
+				<p:dataTable
+
+					id="tabela"
+					var="notaFiscal"
+					value="#{notaFiscalListBean.listNotasFiscaisByEmitente}"
+					emptyMessage="Nenhuma nota fiscal cadastrada"
+					lazy="true"
+					rows="10"
+					resizableColumns="true"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+					rowsPerPageTemplate="5,10,15">
+
+					    <p:column styleClass="dados">
+					    	<f:facet name="header">
+					    		<h:outputText value="Razão Social - CNPJ"/>
+					    	</f:facet>
+				            <h:outputText value="#{notaFiscal.emitente.dadosEmpresa.razaoSocial} - #{notaFiscal.emitente.dadosEmpresa.cnpj}" />
+				        </p:column>
+			         
+						<p:column styleClass="numero" width="12%">
+					    	<f:facet name="header">
+					    		<h:outputText value="Numero da Nota Fiscal"/>
+					    	</f:facet>
+							<h:outputText value="#{notaFiscal.numero}"/>
+						</p:column>
+
+						<p:column styleClass="numero" width="7%">
+					    	<f:facet name="header">
+					    		<h:outputText value="Série da Nota Fiscal"/>
+					    	</f:facet>
+							<h:outputText value="#{notaFiscal.serie}"/>
+						</p:column>
+
+						<p:column styleClass="dados">
+					    	<f:facet name="header">
+					    		<h:outputText value="Data de Emissão"/>
+					    	</f:facet>
+							<h:outputText value="#{notaFiscal.dataEmissao}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column style="width:5%" exportable="false">
+							<f:facet name="header">
+								<h:outputText value="Ação"/>
+							</f:facet>
+							<center>
+								<p:commandButton process="@this" styleClass="botaoImagem" icon="botaoLog" title="Detalhes da Nota Fiscal" actionListener="#{notaFiscalListBean.findDadosNotaFiscal(notaFiscal.id)}" oncomplete="wdgDetalhe.show()" update=":dlg:dlgDetalhe"/>
+								<h:commandLink title="Visualizar Nota Fiscal" actionListener="#{notaFiscalListBean.generatePdf(notaFiscal.id)}" target="_blank" >
+									<p:graphicImage library="images" name="report-icon.jpg"/>
+								</h:commandLink>
+							</center>
+						</p:column>
+										        	
+        		</p:dataTable>				
+				<br />
+				<br />				
+
+			</h:form>
+			
+			<h:form id="dlg">
+				<p:dialog id="dlgDetalhe" widgetVar="wdgDetalhe" modal="true" width="800" height="400">
+					<p:tabView effect="blind" effectDuration="normal">
+						<p:tab title="Dados da nota fiscal">
+							<p:panelGrid styleClass="panelGridCenter noBorders">
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Chave de Acesso"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.chaveNfe}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Numero"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.numero}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Série"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.serie}"/>
+									</p:column>
+								</p:row>
+							
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Data Emissão"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.dataEmissao}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</p:outputLabel>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Data Saída"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.dataHoraEntradaOuSaidaProduto}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</p:outputLabel>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Valor do ICMS"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.valorIcms}">
+											<f:convertNumber currencySymbol="R$" type="currency"/>
+										</p:outputLabel>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Valor da NotaFiscal"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.valorNotaFiscal}">
+											<f:convertNumber currencySymbol="R$" type="currency"/>
+										</p:outputLabel>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Natureza da Operação"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.descricaoNaturezaOperacao}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Tipo da Operação"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.tipoOperacao.descricao}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:tab>
+					
+						<p:tab title="Dados do emitente">
+							<p:panelGrid styleClass="panelGridCenter noBorders">
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Razão Social"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.razaoSocial}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CNPJ"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.cnpj}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Inscrição Estadual"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.inscricaoEstadual}"/>
+									</p:column>
+								</p:row>
+							
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Inscrição Municipal"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.inscricaoMunicipal}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Logradouro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.logradouro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Numero"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.numero}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Bairro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.bairro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Complemento"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.complemento}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Cidade"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.municipio}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Estado"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.uf.descricao}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CEP"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.cep}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Telefone"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.emitente.dadosEmpresa.endereco.telefone}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:tab>
+
+						<p:tab title="Dados do destinatário">
+							<p:panelGrid styleClass="panelGridCenter noBorders">
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Razão Social"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.razaoSocial}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CNPJ"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.cnpj}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Inscrição Estadual"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.inscricaoEstadual}"/>
+									</p:column>
+								</p:row>
+							
+								<p:row>
+									<p:column>
+										<p:outputLabel value="E-mail"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.email}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Logradouro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.logradouro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Numero"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.numero}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Bairro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.bairro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Complemento"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.complemento}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Cidade"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.municipio}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Estado"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.uf.descricao}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CEP"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.cep}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Telefone"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{notaFiscalListBean.notaFiscal.destinatario.dadosEmpresa.endereco.telefone}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</p:dialog>
+			</h:form>
+			
+		</div>
+	</ui:define>
+</ui:composition>

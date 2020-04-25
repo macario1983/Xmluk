@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<import resource="spring-service.xml" />
+
+	<bean id="usuarioHelper" class="com.nfehost.view.helper.impl.UsuarioHelperImpl"/>
+
+	<bean id="contatoHelper" class="com.nfehost.view.helper.impl.ContatoHelperImpl">
+		<property name="emitenteService" ref="emitenteService" />
+	</bean>
+
+	<bean id="notaFiscalHelper" class="com.nfehost.view.helper.impl.NotaFiscalHelperImpl">
+		<property name="emitenteService" ref="emitenteService" />
+	</bean>
+
+	<bean id="emitenteHelper" class="com.nfehost.view.helper.impl.EmitenteHelperImpl"/>
+
+	<bean id="destinatarioHelper" class="com.nfehost.view.helper.impl.DestinatarioHelperImpl"/>
+
+	<bean id="arquivoHelper" class="com.nfehost.view.helper.impl.ArquivoHelperImpl"/>
+
+	<bean id="emailHelper" class="com.nfehost.view.helper.impl.EmailHelperImpl">
+		<property name="emitenteService" ref="emitenteService" />
+		<property name="contatoService" ref="contatoService" />
+		<property name="notaFiscalService" ref="notaFiscalService" />
+	</bean>
+
+</beans>

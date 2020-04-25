@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<f:metadata>
+				<f:event listener="#{destinatarioListBean.helper.fillDefaults()}" type="preRenderView" />
+			</f:metadata>
+			
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="Filtro de Destinatários"/> </span>
+			</div>
+			<br />
+
+			<h:form id="list">
+
+				<p:messages id="messages"/>
+
+				<p:panelGrid styleClass="panelGridCenter noBorders">
+						
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Destinatário"/>
+						</p:column>
+
+						<p:column>
+						<p:column>
+							<p:inputText maxlength="60" size="65" value="#{destinatarioListBean.filter.razaoSocial}" />
+						</p:column>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="CNPJ"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="14" size="19" value="#{destinatarioListBean.filter.cnpj}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column styleClass="columnRight">
+							<p:outputLabel value="Inscrição Estadual"/>
+						</p:column>
+						
+						<p:column>
+							<p:inputText maxlength="14" size="19" value="#{destinatarioListBean.filter.inscricaoEstadual}" />
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<div align="left">
+									<h:commandLink value="Salvar em pdf" disabled="#{empty destinatarioListBean.lazyModel}">
+										<p:dataExporter type="pdf" target="tabela" fileName="destinatario" encoding="CP1252"/> 
+									</h:commandLink>
+								</div>
+								<div align="right">
+									<p:commandButton value="Filtrar" actionListener="#{destinatarioListBean.buscar}" update="tabela messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+				</p:panelGrid>
+
+				<br/>
+				<div class="form_title">
+					<span class="active"> <p:outputLabel value="Destinatários Cadastrados"/> </span>
+				</div>
+
+				<br/><br/>
+
+				<p:dataTable
+					id="tabela"
+					var="destinatario"
+					value="#{destinatarioListBean.lazyModel}"
+					emptyMessage="Nenhum destinatário encontrado"
+					sortBy="#{destinatario.id}"
+					lazy="true"
+					rows="10"
+					resizableColumns="true"
+					rowKey="#{destinatario.id}"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column headerText="Código" width="7%" styleClass="numero">
+				    	<f:facet name="header">
+				    		<h:outputText value="Código"/>
+				    	</f:facet>
+						<h:outputText value="#{destinatario.id}"/>
+					</p:column>
+
+					<p:column>
+				    	<f:facet name="header">
+				    		<h:outputText value="Razão Social"/>
+				    	</f:facet>
+						<h:outputText value="#{destinatario.dadosEmpresa.razaoSocial}"/>
+					</p:column>
+
+					<p:column width="10%" styleClass="dados">
+				    	<f:facet name="header">
+				    		<h:outputText value="CNPJ"/>
+				    	</f:facet>
+						<h:outputText value="#{destinatario.dadosEmpresa.cnpj}"/>
+					</p:column>
+
+					<p:column width="15%" styleClass="dados">
+				    	<f:facet name="header">
+				    		<h:outputText value="Inscrição Estadual"/>
+				    	</f:facet>
+						<h:outputText value="#{destinatario.dadosEmpresa.inscricaoEstadual}"/>
+					</p:column>
+
+					<p:column width="7%" exportable="false">
+						<f:facet name="header">
+							<h:outputText value="Ação"/>
+						</f:facet>
+						<center>
+							<p:commandButton process="@this" styleClass="botaoImagem" icon="botaoLog" title="Detalhes do Destinatário" actionListener="#{destinatarioListBean.findDadosDestinatario(destinatario.id)}" oncomplete="dlgDetalhes.show()" update=":dlg:detalhe"/>
+						</center>
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+				<br />
+
+			</h:form>
+			
+			<h:form id="dlg">
+				<p:dialog id="detalhe" widgetVar="dlgDetalhes" modal="true">
+					<p:tabView effect="slide" effectDuration="normal">
+						<p:tab title="Dados do destinatário">
+							<p:panelGrid styleClass="panelGridCenter noBorders">
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Razão Social"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.razaoSocial}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CNPJ"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.cnpj}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Inscrição Estadual"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.inscricaoEstadual}"/>
+									</p:column>
+								</p:row>
+							
+								<p:row>
+									<p:column>
+										<p:outputLabel value="E-mail"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.email}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Logradouro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.logradouro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Numero"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.numero}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Bairro"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.bairro}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Complemento"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.complemento}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Cidade"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.municipio}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Estado"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.uf.descricao}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="CEP"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.cep}"/>
+									</p:column>
+								</p:row>
+
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Telefone"/>
+									</p:column>
+									
+									<p:column>
+										<p:outputLabel value="#{destinatarioListBean.destinatario.dadosEmpresa.endereco.telefone}"/>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</p:dialog>
+			</h:form>
+			
+		</div>
+	</ui:define>
+</ui:composition>

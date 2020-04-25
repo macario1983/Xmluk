@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition 
+	template="/template/common/pagelayout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ez="http://java.sun.com/jsf/composite" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:define name="content">
+		<div id="content">
+
+			<br />
+			
+			<div class="form_title">
+				<span class="active"> <p:outputLabel value="E-mail"/> </span>
+			</div>
+			<br />
+
+			<h:form id="form">
+				
+				<p:messages id="messages"/>
+				
+				<p:panelGrid id="panelEmail" styleClass="panelGridCenter noBorders">
+				
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<div align="right">
+									<p:commandButton value="Verificar caixa de e-mail" actionListener="#{anexoBean.process()}" update="panelEmail messages"/>
+								</div>
+							</p:column>
+						</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+
+				<br/><br/>
+			</h:form>
+						
+		</div>
+
+	</ui:define>
+</ui:composition>
